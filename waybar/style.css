@@ -1,0 +1,195 @@
+/* ╭──────────────────────────────────────────────╮
+   │   🌸  Akane Sakurai · Waybar Theme  🌸    │
+   │   Sakura Season — soft, warm, polished.    │
+   ╰──────────────────────────────────────────────╯
+   Palette:
+     Cherry blossom ... #f0a0b0    Active accent
+     Pale rose ........ #d4a8b8    Borders / subtle highlights
+     Warm white ....... #f0e4e8    Primary text
+     Muted mauve ...... #a09098    Secondary text
+     Akane red ........ #d44a5a    Warnings / critical
+     Soft sage ........ #a0d4a8    Positive / charging
+*/
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Ubuntu Nerd Font", "Noto Sans CJK TH", sans-serif;
+    font-size: 12.5px;
+    min-height: 0;
+}
+
+/* ── Bar ──────────────────────────────────── */
+
+window#waybar {
+    background: rgba(22, 18, 24, 0.88);
+    color: #f0e4e8;
+    border-bottom: 1px solid rgba(240, 160, 176, 0.12);
+}
+
+/* ── Modules container ────────────────────── */
+
+.modules-left,
+.modules-center,
+.modules-right {
+    padding: 0 6px;
+}
+
+/* ── Workspaces ──────────────────────────── */
+
+#workspaces {
+    margin: 3px 0;
+}
+
+#workspaces button {
+    padding: 0 6px;
+    margin: 0 2px;
+    background: transparent;
+    color: #a09098;
+    border-radius: 6px;
+    transition: all 0.25s ease;
+}
+
+#workspaces button:hover {
+    background: rgba(240, 160, 176, 0.15);
+    color: #f0e4e8;
+    box-shadow: none;
+}
+
+#workspaces button.active {
+    background: rgba(240, 160, 176, 0.18);
+    color: #f0a0b0;
+    box-shadow: 0 1px 6px rgba(240, 160, 176, 0.25);
+}
+
+#workspaces button.urgent {
+    background: rgba(212, 74, 90, 0.25);
+    color: #d44a5a;
+    border: 1px solid rgba(212, 74, 90, 0.5);
+    border-radius: 6px;
+}
+
+/* ── Window Title ────────────────────────── */
+
+#window {
+    font-weight: 500;
+    color: #c0b0b8;
+    padding: 0 8px;
+}
+
+/* ── Shared module base ──────────────────── */
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#custom-language,
+#custom-spotify,
+#tray,
+#mode {
+    padding: 0 8px;
+    margin: 3px 2px;
+    color: #e0d4d8;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+/* ── Individual modules ──────────────────── */
+
+#clock {
+    font-weight: 700;
+    color: #f0e4e8;
+    background: rgba(240, 160, 176, 0.08);
+    padding: 0 12px;
+}
+
+#custom-language {
+    color: #d4a8b8;
+    font-weight: 600;
+    background: rgba(212, 168, 184, 0.10);
+}
+
+#pulseaudio {
+    color: #e0c8d0;
+}
+
+#pulseaudio.muted {
+    color: #705060;
+}
+
+#pulseaudio.bluetooth {
+    color: #b8d0e8;
+}
+
+#network {
+    color: #d0c0c8;
+}
+
+#network.disconnected {
+    color: #d44a5a;
+    background: rgba(212, 74, 90, 0.12);
+}
+
+#cpu {
+    color: #d8c0c8;
+}
+
+#memory {
+    color: #c8b8c0;
+}
+
+#battery {
+    color: #d0c0c8;
+}
+
+#battery.charging {
+    color: #a0d4a8;
+}
+
+#battery.warning:not(.charging) {
+    color: #e8a870;
+    background: rgba(232, 168, 112, 0.12);
+}
+
+#battery.critical:not(.charging) {
+    color: #d44a5a;
+    background: rgba(212, 74, 90, 0.18);
+    font-weight: bold;
+}
+
+/* ── Spotify (optional) ──────────────────── */
+
+#custom-spotify {
+    color: #a0d4a8;
+    background: rgba(160, 212, 168, 0.10);
+}
+
+/* ── Tray ────────────────────────────────── */
+
+#tray {
+    padding: 0 6px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+/* ── Tooltips ────────────────────────────── */
+
+tooltip {
+    background: rgba(22, 18, 24, 0.95);
+    border: 1px solid rgba(240, 160, 176, 0.2);
+    border-radius: 8px;
+    padding: 6px 10px;
+}
+
+tooltip label {
+    color: #f0e4e8;
+    font-size: 12px;
+}
