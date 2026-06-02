@@ -1,0 +1,197 @@
+/* ╭──────────────────────────────────────────────╮
+   │  ✉️  Violet Evergarden · Waybar Theme  ✉️  │
+   │  "I want to know what 'I love you' means."  │
+   ╰──────────────────────────────────────────────╯
+   Palette:
+     Violet iris ..... #8888cc    Active accent (her eyes)
+     Golden letter ... #d4b06a    Golden highlight (her hair, brass keys)
+     Navy uniform .... #5a6088    Inactive muted blue
+     Crimson seal .... #c04858    Urgent / critical (wax seal red)
+     Emerald brooch .. #5a9e7a    Positive / charging (her brooch)
+     Ivory paper ..... #f0e8d8    Primary text (warm letter paper)
+     Parchment ....... #b0a090    Secondary text (aged paper)
+     Midnight ink .... #1a1830    Deepest navy bar background
+*/
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Ubuntu Nerd Font", "Noto Sans CJK TH", sans-serif;
+    font-size: 12.5px;
+    min-height: 0;
+}
+
+/* ── Bar ──────────────────────────────────── */
+
+window#waybar {
+    background: rgba(18, 16, 30, 0.90);
+    color: #f0e8d8;
+    border-bottom: 1px solid rgba(136, 136, 204, 0.12);
+}
+
+/* ── Modules container ────────────────────── */
+
+.modules-left,
+.modules-center,
+.modules-right {
+    padding: 0 6px;
+}
+
+/* ── Workspaces ──────────────────────────── */
+
+#workspaces {
+    margin: 3px 0;
+}
+
+#workspaces button {
+    padding: 0 6px;
+    margin: 0 2px;
+    background: transparent;
+    color: #b0a090;
+    border-radius: 6px;
+    transition: all 0.25s ease;
+}
+
+#workspaces button:hover {
+    background: rgba(136, 136, 204, 0.15);
+    color: #f0e8d8;
+    box-shadow: none;
+}
+
+#workspaces button.active {
+    background: rgba(136, 136, 204, 0.18);
+    color: #8888cc;
+    box-shadow: 0 1px 6px rgba(136, 136, 204, 0.25);
+}
+
+#workspaces button.urgent {
+    background: rgba(192, 72, 88, 0.25);
+    color: #c04858;
+    border: 1px solid rgba(192, 72, 88, 0.5);
+    border-radius: 6px;
+}
+
+/* ── Window Title ────────────────────────── */
+
+#window {
+    font-weight: 500;
+    color: #b0a090;
+    padding: 0 8px;
+}
+
+/* ── Shared module base ──────────────────── */
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#custom-language,
+#custom-spotify,
+#tray,
+#mode {
+    padding: 0 8px;
+    margin: 3px 2px;
+    color: #e0d8c8;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+/* ── Individual modules ──────────────────── */
+
+#clock {
+    font-weight: 700;
+    color: #f0e8d8;
+    background: rgba(212, 176, 106, 0.08);
+    padding: 0 12px;
+}
+
+#custom-language {
+    color: #8888cc;
+    font-weight: 600;
+    background: rgba(136, 136, 204, 0.10);
+}
+
+#pulseaudio {
+    color: #d8c898;
+}
+
+#pulseaudio.muted {
+    color: #706050;
+}
+
+#pulseaudio.bluetooth {
+    color: #9898c8;
+}
+
+#network {
+    color: #c8c0a8;
+}
+
+#network.disconnected {
+    color: #c04858;
+    background: rgba(192, 72, 88, 0.12);
+}
+
+#cpu {
+    color: #d0c0a0;
+}
+
+#memory {
+    color: #c0b898;
+}
+
+#battery {
+    color: #c8c0a8;
+}
+
+#battery.charging {
+    color: #5a9e7a;
+}
+
+#battery.warning:not(.charging) {
+    color: #d4b06a;
+    background: rgba(212, 176, 106, 0.12);
+}
+
+#battery.critical:not(.charging) {
+    color: #c04858;
+    background: rgba(192, 72, 88, 0.18);
+    font-weight: bold;
+}
+
+/* ── Spotify (optional) ──────────────────── */
+
+#custom-spotify {
+    color: #5a9e7a;
+    background: rgba(90, 158, 122, 0.10);
+}
+
+/* ── Tray ────────────────────────────────── */
+
+#tray {
+    padding: 0 6px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+/* ── Tooltips ────────────────────────────── */
+
+tooltip {
+    background: rgba(18, 16, 30, 0.95);
+    border: 1px solid rgba(136, 136, 204, 0.2);
+    border-radius: 8px;
+    padding: 6px 10px;
+}
+
+tooltip label {
+    color: #f0e8d8;
+    font-size: 12px;
+}

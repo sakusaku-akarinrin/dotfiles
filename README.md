@@ -1,20 +1,33 @@
-# 🌸 Akane Sakurai · Dotfiles
+# ✉️ Akane Sakurai · Dotfiles
 
 Gentle. Professional. Organized.
+
+Two themes for Niri + Waybar — switch with a single cp command.
 
 ## What's inside
 
 ```
 dotfiles/
-├── niri/
-│   └── config.kdl       # Niri window manager — scrollable-tiling
-└── waybar/
-    ├── config            # Waybar module layout
-    ├── style.css         # Sakura Season theme
-    └── lang.sh           # Keyboard layout indicator for Niri
+├── sakura-season/          🌸 Cherry blossom pink — soft & warm
+│   ├── niri/config.kdl
+│   └── waybar/
+│       ├── config
+│       ├── style.css
+│       └── lang.sh
+│
+└── violet-evergarden/      ✉️ Violet iris blue — quiet & dignified
+    ├── niri/config.kdl
+    └── waybar/
+        ├── config
+        ├── style.css
+        └── lang.sh
 ```
 
-## Theme — Sakura Season (桜の季節)
+## Themes
+
+### 🌸 Sakura Season (桜の季節)
+
+Soft, warm, and inviting. Cherry blossom pink meets lavender grey.
 
 | Element | Color |
 |---|---|
@@ -23,19 +36,34 @@ dotfiles/
 | Urgent | `#d44a5a` (madder red — 茜) |
 | Inactive | `#7b7b9e` (soft lavender) |
 
+### ✉️ Violet Evergarden (ヴァイオレット・エヴァーガーデン)
+
+Quiet, dignified, and precise. Violet iris meets golden brass.
+
+| Element | Color |
+|---|---|
+| Accent | `#8888cc` (violet iris — her eyes) |
+| Golden | `#d4b06a` (brass typewriter keys) |
+| Urgent | `#c04858` (crimson wax seal) |
+| Inactive | `#5a6088` (navy uniform blue) |
+| Positive | `#5a9e7a` (emerald brooch) |
+
 ## Installation
 
 ```bash
 git clone git@github.com:sakusaku-akarinrin/dotfiles.git
 cd dotfiles
 
+# Pick your theme (e.g. violet-evergarden)
+THEME=violet-evergarden
+
 # Niri
-cp niri/config.kdl ~/.config/niri/config.kdl
+cp $THEME/niri/config.kdl ~/.config/niri/config.kdl
 
 # Waybar
-cp waybar/config ~/.config/waybar/config
-cp waybar/style.css ~/.config/waybar/style.css
-cp waybar/lang.sh ~/.config/waybar/lang.sh
+cp $THEME/waybar/config ~/.config/waybar/config
+cp $THEME/waybar/style.css ~/.config/waybar/style.css
+cp $THEME/waybar/lang.sh ~/.config/waybar/lang.sh
 chmod +x ~/.config/waybar/lang.sh
 
 # Reload
@@ -44,6 +72,8 @@ pkill -SIGUSR2 waybar
 ```
 
 ## Niri keybind needed
+
+Add this to your Niri config so the keyboard layout indicator updates on switch:
 
 ```kdl
 Mod+Space {

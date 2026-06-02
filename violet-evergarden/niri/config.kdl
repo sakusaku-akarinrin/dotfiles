@@ -1,0 +1,366 @@
+// ╭────────────────────────────────────────────╮
+// │   ✉️  Violet Evergarden · Niri Config  ✉️  │
+// │   "I want to know what 'I love you' means."│
+// ╰────────────────────────────────────────────╯
+//
+//  Palette — "Violet Evergarden" (ヴァイオレット・エヴァーガーデン)
+//  ─────────────────────────────────────────
+//  Violet iris ...... #8888cc  (her eyes — active accent)
+//  Golden letter .... #d4b06a  (her hair / brass typewriter)
+//  Navy uniform ..... #5a6088  (inactive — deep blue)
+//  Crimson seal ..... #c04858  (urgent — wax seal red)
+//  Emerald brooch ... #5a9e7a  (positive / success)
+//  Ivory paper ...... #f0e8d8  (warm letter paper white)
+//  Parchment ........ #b0a090  (aged paper — secondary)
+//  Midnight ink ..... #1a1830  (deepest navy — bar bg)
+//  Shadow ........... #00000032 (deeper than Sakura — weight of words)
+//
+//  Philosophy: Every letter carries a heart.
+//  Precision, warmth, and quiet dignity.
+//  A typewriter's rhythm — deliberate and true.
+
+// ─── Input ───────────────────────────────────
+
+input {
+    keyboard {
+        xkb {
+            // Extend this with your own layout:
+            // layout "us,th"
+            // options "grp:win_space_toggle"
+        }
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+    }
+
+    mouse {
+        // natural-scroll
+    }
+
+    // Warp to newly focused windows — efficient, like a good secretary.
+    warp-mouse-to-focus
+
+    // Follow focus gently when the mouse drifts.
+    focus-follows-mouse max-scroll-amount="0%"
+}
+
+// ─── Outputs ─────────────────────────────────
+// Run `niri msg outputs` to discover your display names.
+// Uncomment and adjust the block below:
+
+/-output "eDP-1" {
+    // mode "1920x1080@120.030"
+    // scale 1
+    // transform "normal"
+    // position x=0 y=0
+}
+
+// ─── Layout — "Every Letter Finds Its Place" ─
+
+layout {
+    // Comfortable breathing room between windows.
+    gaps 12
+
+    // Center the focused column so it's always in view.
+    center-focused-column "always"
+
+    // Three preset widths for quick toggling (Mod+R).
+    preset-column-widths {
+        proportion 0.33333   // one-third  — quick glance
+        proportion 0.5       // half       — side-by-side (default)
+        proportion 0.66667   // two-thirds — deep focus
+    }
+
+    // New windows open at half-width by default — balanced.
+    default-column-width { proportion 0.5; }
+
+    // ── Focus Ring ──────────────────────
+    focus-ring {
+        width 3
+        // Violet iris — her watching eyes.
+        active-color   "#8888cc"
+        // Navy uniform — present but understated.
+        inactive-color "#5a6088"
+
+        // Active gradient: dawn over the ocean.
+        active-gradient from="#a8a8e0" to="#7878b0" angle=135 relative-to="workspace-view"
+        // Inactive gradient: deep midnight blue.
+        inactive-gradient from="#5a6088" to="#444868" angle=135 relative-to="workspace-view"
+    }
+
+    // ── Border ──────────────────────────
+    border {
+        // Subtle border always visible — frames like letter paper.
+        width 2
+        active-color   "#7b82a0"
+        inactive-color "#444868"
+        // Wax seal red for urgent attention.
+        urgent-color   "#c04858"
+
+        active-gradient from="#959ab8" to="#6b7290" angle=135 relative-to="workspace-view"
+        inactive-gradient from="#444868" to="#343858" angle=135 relative-to="workspace-view"
+    }
+
+    // ── Shadow — The Weight of Words ─────
+    shadow {
+        on
+        softness 24
+        spread   4
+        offset x=0 y=4
+        color "#00000032"
+        draw-behind-window true
+    }
+
+    // ── Struts — leave room for bars ────
+    struts {
+        // left 64
+        // right 64
+        // top 32
+        // bottom 0
+    }
+}
+
+// ─── Startup ─────────────────────────────────
+
+// Status bar — waybar is the reliable choice.
+spawn-at-startup "waybar"
+
+// Optional: wallpaper setter
+// spawn-at-startup "swaybg" "-i" "~/Pictures/Wallpapers/violet-evergarden.jpg" "-m" "fill"
+
+// Optional: notification daemon
+// spawn-at-startup "mako"
+
+// Optional: clipboard manager
+// spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+
+// ─── Hotkey Overlay ──────────────────────────
+
+hotkey-overlay {
+    // Show the overlay on first launch — good for learning.
+    // skip-at-startup
+}
+
+// ─── Preferences ─────────────────────────────
+
+// Ask clients to omit their own decorations.
+// Niri will draw clean, uniform borders instead.
+prefer-no-csd
+
+// Screenshots go to a tidy, timestamped location.
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+// ─── Animations — Smooth & Gentle ───────────
+
+animations {
+    // Slightly slower for a calm, deliberate feel.
+    // slowdown 1.5
+}
+
+// ─── Window Rules — Keep Things Tidy ─────────
+
+// WezTerm: fix the initial configure quirk.
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+}
+
+// Firefox PiP: float by default (don't steal a whole column).
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// Rounded corners for a softer look.
+window-rule {
+    geometry-corner-radius 10
+    clip-to-geometry true
+}
+
+// Block password managers from screen capture.
+// Uncomment when you use one:
+/-window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+    block-out-from "screen-capture"
+}
+
+// ─── Keybinds — Efficient & Intuitive ────────
+
+binds {
+    // ── Overlay ─────────────────────────
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // ── Launchers ───────────────────────
+    Mod+Return hotkey-overlay-title="Terminal (Alacritty)"  { spawn "alacritty"; }
+    Mod+D      hotkey-overlay-title="App Launcher (fuzzel)" { spawn "fuzzel"; }
+    Super+Alt+L hotkey-overlay-title="Lock (swaylock)"      { spawn "swaylock"; }
+
+    // Screen reader toggle.
+    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null {
+        spawn-sh "pkill orca || exec orca";
+    }
+
+    // ── Audio (PipeWire) ────────────────
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+    // ── Media (MPRIS) ───────────────────
+    XF86AudioPlay  allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop  allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev  allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext  allow-when-locked=true { spawn-sh "playerctl next"; }
+
+    // ── Brightness ──────────────────────
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+
+    // ── Overview ────────────────────────
+    Mod+O repeat=false { toggle-overview; }
+
+    // ── Close ───────────────────────────
+    Mod+Q repeat=false { close-window; }
+
+    // ── Navigation ──────────────────────
+    Mod+Left  { focus-column-left; }
+    Mod+Down  { focus-window-down; }
+    Mod+Up    { focus-window-up; }
+    Mod+Right { focus-column-right; }
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-window-down; }
+    Mod+K     { focus-window-up; }
+    Mod+L     { focus-column-right; }
+
+    Mod+Ctrl+Left  { move-column-left; }
+    Mod+Ctrl+Down  { move-window-down; }
+    Mod+Ctrl+Up    { move-window-up; }
+    Mod+Ctrl+Right { move-column-right; }
+    Mod+Ctrl+H     { move-column-left; }
+    Mod+Ctrl+J     { move-window-down; }
+    Mod+Ctrl+K     { move-window-up; }
+    Mod+Ctrl+L     { move-column-right; }
+
+    Mod+Home     { focus-column-first; }
+    Mod+End      { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
+
+    // ── Monitor Switching ───────────────
+    Mod+Shift+Left  { focus-monitor-left; }
+    Mod+Shift+Down  { focus-monitor-down; }
+    Mod+Shift+Up    { focus-monitor-up; }
+    Mod+Shift+Right { focus-monitor-right; }
+    Mod+Shift+H     { focus-monitor-left; }
+    Mod+Shift+J     { focus-monitor-down; }
+    Mod+Shift+K     { focus-monitor-up; }
+    Mod+Shift+L     { focus-monitor-right; }
+
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+
+    // ── Workspaces ──────────────────────
+    Mod+Page_Down      { focus-workspace-down; }
+    Mod+Page_Up        { focus-workspace-up; }
+    Mod+U              { focus-workspace-down; }
+    Mod+I              { focus-workspace-up; }
+    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
+    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+    Mod+Ctrl+U         { move-column-to-workspace-down; }
+    Mod+Ctrl+I         { move-column-to-workspace-up; }
+
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+U         { move-workspace-down; }
+    Mod+Shift+I         { move-workspace-up; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    Mod+Ctrl+6 { move-column-to-workspace 6; }
+    Mod+Ctrl+7 { move-column-to-workspace 7; }
+    Mod+Ctrl+8 { move-column-to-workspace 8; }
+    Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+    // ── Scroll ──────────────────────────
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Mod+WheelScrollRight      { focus-column-right; }
+    Mod+WheelScrollLeft       { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+
+    Mod+Shift+WheelScrollDown      { focus-column-right; }
+    Mod+Shift+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    // ── Column Management ──────────────
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+Comma        { consume-window-into-column; }
+    Mod+Period       { expel-window-from-column; }
+
+    // ── Sizing ─────────────────────────
+    Mod+R       { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-column-width-back; }
+    Mod+Ctrl+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+
+    Mod+F       { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+M       { maximize-window-to-edges; }
+    Mod+Ctrl+F  { expand-column-to-available-width; }
+    Mod+C       { center-column; }
+    Mod+Ctrl+C  { center-visible-columns; }
+
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    // ── Floating ────────────────────────
+    Mod+V       { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+    // ── Tabbed Columns ──────────────────
+    Mod+W { toggle-column-tabbed-display; }
+
+    // ── Screenshots ─────────────────────
+    Print      { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print  { screenshot-window; }
+
+    // ── Escape Hatch ────────────────────
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    // ── Session ─────────────────────────
+    Mod+Shift+E     { quit; }
+    Ctrl+Alt+Delete { quit; }
+    Mod+Shift+P     { power-off-monitors; }
+}
