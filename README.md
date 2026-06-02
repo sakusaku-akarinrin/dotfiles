@@ -54,6 +54,59 @@ Quiet, dignified, and precise. Violet iris meets golden brass.
 | Inactive | `#5a6088` (navy uniform blue) |
 | Positive | `#5a9e7a` (emerald brooch) |
 
+## Dependencies
+
+### Core (required)
+
+```bash
+# Wayland compositor + tools
+sudo dnf install niri waybar fuzzel alacritty
+
+# Screen locker (pick one or both)
+sudo dnf install gtklock gtklock-userinfo-module gtklock-powerbar-module
+sudo dnf install swaylock
+
+# Audio (volume keys, mute, media controls)
+sudo dnf install wireplumber playerctl
+
+# Brightness (laptop backlight keys)
+sudo dnf install brightnessctl
+```
+
+### Fonts
+
+```bash
+# Nerd Font (for waybar icons — 🌸 💌  etc.)
+# Download from https://www.nerdfonts.com or:
+sudo dnf install jetbrains-mono-nf-fonts
+
+# Adwaita Mono (for alacritty, gtklock — ships with GNOME)
+# Already installed if you had GNOME. Verify:
+fc-list | grep Adwaita
+```
+
+### Optional
+
+```bash
+# Wallpaper (swaybg or hyprpaper)
+sudo dnf install swaybg
+
+# Notifications
+sudo dnf install mako
+
+# Clipboard history
+sudo dnf install cliphist
+
+# GUI audio mixer (on-click from waybar)
+sudo dnf install pavucontrol
+
+# Network editor (on-click from waybar)
+sudo dnf install nm-connection-editor
+
+# Icon theme (fuzzel app icons)
+sudo dnf install papirus-icon-theme
+```
+
 ## Installation
 
 ```bash
@@ -87,9 +140,6 @@ cp $THEME/swaylock/config ~/.config/swaylock/config
 mkdir -p ~/.config/gtklock
 cp $THEME/gtklock/config.ini ~/.config/gtklock/config.ini
 cp $THEME/gtklock/style.css ~/.config/gtklock/style.css
-
-# Prerequisite: install gtklock modules
-sudo dnf install gtklock gtklock-userinfo-module gtklock-powerbar-module
 
 # Reload
 niri msg action quit-and-replace  # or just restart Niri
