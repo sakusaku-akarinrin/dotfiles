@@ -2,7 +2,7 @@
 
 Gentle. Professional. Organized.
 
-Two themes for Niri + Waybar + Fuzzel + Alacritty + gtklock — switch with a single cp command.
+Two themes for Niri + Waybar + Fuzzel + Alacritty + Swaylock — switch with a single cp command.
 
 ## What's inside
 
@@ -15,8 +15,7 @@ dotfiles/
 │   ├── alacritty/
 │   │   ├── alacritty.toml
 │   │   └── themes/sakura-season.toml
-│   ├── swaylock/config
-│   └── gtklock/config.ini, style.css
+│   └── swaylock/config
 │
 └── violet-evergarden/      ✉️ Violet iris blue — quiet & dignified
     ├── niri/config.kdl
@@ -25,8 +24,7 @@ dotfiles/
     ├── alacritty/
     │   ├── alacritty.toml
     │   └── themes/violet-evergarden.toml
-    ├── swaylock/config
-    └── gtklock/config.ini, style.css
+    └── swaylock/config
 ```
 
 ## Themes
@@ -62,19 +60,7 @@ Quiet, dignified, and precise. Violet iris meets golden brass.
 # Wayland compositor + tools
 sudo dnf install niri waybar fuzzel alacritty
 
-# Screen locker (pick one or both)
-# gtklock — GNOME-style interactive lock screen
-sudo dnf copr enable wef/gtklock
-sudo dnf install gtklock
-
-# Optional gtklock modules (user avatar + power buttons):
-#   git clone https://github.com/jovanlanik/gtklock-userinfo-module
-#   cd gtklock-userinfo-module && make && sudo make install
-#   git clone https://github.com/jovanlanik/gtklock-powerbar-module
-#   cd gtklock-powerbar-module && make && sudo make install
-# Then uncomment the modules= line in config.ini
-
-# swaylock — minimal / lightweight
+# Screen locker
 sudo dnf install swaylock
 
 # Audio (volume keys, mute, media controls)
@@ -91,7 +77,7 @@ sudo dnf install brightnessctl
 # Download from https://www.nerdfonts.com or:
 sudo dnf install jetbrains-mono-nf-fonts
 
-# Adwaita Mono (for alacritty, gtklock — ships with GNOME)
+# Adwaita Mono (for alacritty — ships with GNOME)
 # Already installed if you had GNOME. Verify:
 fc-list | grep Adwaita
 ```
@@ -99,7 +85,7 @@ fc-list | grep Adwaita
 ### Optional
 
 ```bash
-# Wallpaper (swaybg or hyprpaper)
+# Wallpaper
 sudo dnf install swaybg
 
 # Notifications
@@ -144,39 +130,22 @@ cp $THEME/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 mkdir -p ~/.config/alacritty/themes
 cp $THEME/alacritty/themes/*.toml ~/.config/alacritty/themes/
 
-# Swaylock (minimal screen locker)
+# Swaylock (screen locker)
 cp $THEME/swaylock/config ~/.config/swaylock/config
-
-# gtklock (GNOME-style interactive screen locker)
-mkdir -p ~/.config/gtklock
-cp $THEME/gtklock/config.ini ~/.config/gtklock/config.ini
-cp $THEME/gtklock/style.css ~/.config/gtklock/style.css
 
 # Reload
 niri msg action quit-and-replace  # or just restart Niri
 pkill -SIGUSR2 waybar
 ```
 
-## gtklock features
+## Lock screen
 
-Works out of the box with just `sudo dnf copr enable wef/gtklock && sudo dnf install gtklock`.
+Super+Alt+L triggers **swaylock** — minimal, reliable, and fully themed per palette.
 
-- **Dynamic idle hide** — after 5 seconds, the input form fades away leaving only a large clock. Press any key or move the mouse to bring it back.
-- **Wrong password feedback** — input border and clock turn theme-red for visual confirmation.
-- **Per-monitor styling** — use `window#eDP-1` / `window#HDMI-A-1` selectors for different wallpapers per output.
-
-With modules (build from source, see Dependencies above):
-- **User avatar + name** — via `userinfo-module`
-- **Power bar** — shutdown, reboot, suspend via `powerbar-module`
-
-## Niri keybind needed
+The niri keybind is already in each theme's config:
 
 ```kdl
-Mod+Space {
-    spawn-sh "niri msg action switch-layout next; pkill -SIGRTMIN+1 waybar";
-}
-
-# Lock screen (choose one):
-Super+Alt+L { spawn "gtklock"; }      # GNOME-style interactive
-# Super+Alt+L { spawn "swaylock"; }   # minimal / lightweight
+Super+Alt+L { spawn "swaylock"; }
 ```
+
+Swaylock reads its ring colors (idle, verifying, wrong, cleared) from `~/.config/swaylock/config`.
