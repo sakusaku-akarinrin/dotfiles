@@ -63,7 +63,10 @@ Quiet, dignified, and precise. Violet iris meets golden brass.
 sudo dnf install niri waybar fuzzel alacritty
 
 # Screen locker (pick one or both)
+# gtklock + modules (GNOME-style interactive)
+sudo dnf copr enable wef/gtklock
 sudo dnf install gtklock gtklock-userinfo-module gtklock-powerbar-module
+# swaylock (minimal / lightweight)
 sudo dnf install swaylock
 
 # Audio (volume keys, mute, media controls)
