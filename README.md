@@ -2,7 +2,7 @@
 
 Gentle. Professional. Organized.
 
-Two themes for Niri + Waybar + Fuzzel + Alacritty — switch with a single cp command.
+Two themes for Niri + Waybar + Fuzzel + Alacritty + Swaylock — switch with a single cp command.
 
 ## What's inside
 
@@ -12,13 +12,15 @@ dotfiles/
 │   ├── niri/config.kdl
 │   ├── waybar/config, style.css, lang.sh
 │   ├── fuzzel/fuzzel.ini
-│   └── alacritty/alacritty.toml
+│   ├── alacritty/alacritty.toml
+│   └── swaylock/config
 │
 └── violet-evergarden/      ✉️ Violet iris blue — quiet & dignified
     ├── niri/config.kdl
     ├── waybar/config, style.css, lang.sh
     ├── fuzzel/fuzzel.ini
-    └── alacritty/alacritty.toml
+    ├── alacritty/alacritty.toml
+    └── swaylock/config
 ```
 
 ## Themes
@@ -69,6 +71,9 @@ cp $THEME/fuzzel/fuzzel.ini ~/.config/fuzzel/fuzzel.ini
 
 # Alacritty (terminal)
 cp $THEME/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
+
+# Swaylock (screen locker)
+cp $THEME/swaylock/config ~/.config/swaylock/config
 
 # Reload
 niri msg action quit-and-replace  # or just restart Niri

@@ -1,0 +1,55 @@
+# ╭────────────────────────────────────────────╮
+# │  🌸  Akane Sakurai · Swaylock Config  🌸  │
+# │  Sakura Season — soft, warm, welcoming.   │
+# ╰────────────────────────────────────────────╯
+#
+# Palette:
+#   Cherry blossom ... #f0a0b0    Ring / key highlight
+#   Pale rose ........ #d4a8b8    Line / separator
+#   Warm white ....... #f0e4e8    Text
+#   Akane red ........ #d44a5a    Wrong password
+#   Soft sage ........ #a0d4a8    Verified
+#   Deep night ....... #161218    Background
+
+color=161218
+font="Ubuntu Nerd Font"
+font-size=24
+indicator-radius=120
+indicator-thickness=8
+line-color=d4a8b8
+
+# ── Idle state ──────────────────────────
+ring-color=f0a0b0
+inside-color=00000000
+inside-clear-color=00000000
+text-color=f0e4e8e0
+separator-color=00000000
+
+# ── Key press ───────────────────────────
+key-hl-color=f0a0b0ff
+bs-hl-color=d44a5aff
+
+# ── Verified (correct) ──────────────────
+ring-ver-color=a0d4a8
+inside-ver-color=00000000
+text-ver-color=a0d4a8e0
+line-ver-color=a0d4a8
+
+# ── Wrong password ──────────────────────
+ring-wrong-color=d44a5a
+inside-wrong-color=d44a5a20
+text-wrong-color=d44a5a
+line-wrong-color=d44a5a
+
+# ── Caps Lock ───────────────────────────
+ring-caps-lock-color=d4c090
+inside-caps-lock-color=d4c09015
+text-caps-lock-color=d4c090
+key-hl-caps-lock-color=d4c090
+bs-hl-caps-lock-color=d4a060
+
+# ── Behaviour ───────────────────────────
+show-failed-attempts
+indicator-idle-visible
+ignore-empty-password
+grace=5

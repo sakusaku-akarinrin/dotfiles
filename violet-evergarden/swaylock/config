@@ -1,0 +1,55 @@
+# ╭────────────────────────────────────────────╮
+# │ ✉️  Violet Evergarden · Swaylock Config ✉️ │
+# │ "I want to know what 'I love you' means."  │
+# ╰────────────────────────────────────────────╯
+#
+# Palette:
+#   Violet iris ...... #8888cc    Ring (her eyes)
+#   Golden letter .... #d4b06a    Key highlight (brass keys)
+#   Crimson seal ..... #c04858    Wrong password (wax seal)
+#   Emerald brooch ... #5a9e7a    Verified (her brooch)
+#   Ivory paper ...... #f0e8d8    Text (letter paper)
+#   Midnight ink ..... #100e1a    Background (deepest navy)
+
+color=100e1a
+font="Ubuntu Nerd Font"
+font-size=24
+indicator-radius=120
+indicator-thickness=8
+line-color=8888cc
+
+# ── Idle state ──────────────────────────
+ring-color=8888cc
+inside-color=00000000
+inside-clear-color=00000000
+text-color=f0e8d8e0
+separator-color=00000000
+
+# ── Key press ───────────────────────────
+key-hl-color=d4b06aff
+bs-hl-color=c04858ff
+
+# ── Verified (correct) ──────────────────
+ring-ver-color=5a9e7a
+inside-ver-color=00000000
+text-ver-color=5a9e7ae0
+line-ver-color=5a9e7a
+
+# ── Wrong password ──────────────────────
+ring-wrong-color=c04858
+inside-wrong-color=c0485820
+text-wrong-color=c04858
+line-wrong-color=c04858
+
+# ── Caps Lock ───────────────────────────
+ring-caps-lock-color=d4b06a
+inside-caps-lock-color=d4b06a15
+text-caps-lock-color=d4b06a
+key-hl-caps-lock-color=d4b06a
+bs-hl-caps-lock-color=c09050
+
+# ── Behaviour ───────────────────────────
+show-failed-attempts
+indicator-idle-visible
+ignore-empty-password
+grace=5
