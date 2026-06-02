@@ -52,6 +52,7 @@ weather_indicator = "IconAndTemperature"
 
 # ── Tray ─────────────────────────────────
 [tray]
+blocklist = []
 icon_size = 18
 spacing = 8
 
