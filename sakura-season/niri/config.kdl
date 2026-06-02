@@ -121,8 +121,11 @@ layout {
 
 // ─── Startup ─────────────────────────────────
 
-// Status bar — waybar is the reliable choice.
-spawn-at-startup "waybar"
+// Ashell — Wayland status bar
+spawn-at-startup "ashell"
+
+// Formerly waybar — replaced by ashell
+// spawn-at-startup "waybar"
 
 // Optional: wallpaper setter
 // spawn-at-startup "swaybg" "-i" "~/Pictures/Wallpapers/sakura.jpg" "-m" "fill"
