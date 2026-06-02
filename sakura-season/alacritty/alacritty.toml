@@ -20,14 +20,14 @@ dynamic_padding = false
 size = 11
 
 [font.normal]
-family = "DejaVu Sans Mono"
+family = "monospace"
 
 [font.bold]
-family = "DejaVu Sans Mono"
+family = "monospace"
 style = "Bold"
 
 [font.italic]
-family = "DejaVu Sans Mono"
+family = "monospace"
 style = "Italic"
 
 [scrolling]
