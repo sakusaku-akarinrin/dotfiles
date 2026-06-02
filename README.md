@@ -79,12 +79,25 @@ sudo cp /usr/local/etc/pam.d/gtklock /etc/pam.d/gtklock
 ```
 
 Optional modules (user avatar + power buttons):
+
 ```bash
+# Build dependencies
+sudo dnf install meson gcc gtk3-devel accountsservice-devel git
+
+# User info module (avatar + username)
 git clone https://github.com/jovanlanik/gtklock-userinfo-module
-cd gtklock-userinfo-module && make && sudo make install
+cd gtklock-userinfo-module
+meson setup build
+ninja -C build
+sudo ninja -C build install
+cd ..
+
+# Power bar module (shutdown, reboot, suspend)
 git clone https://github.com/jovanlanik/gtklock-powerbar-module
-cd gtklock-powerbar-module && make && sudo make install
-```
+cd gtklock-powerbar-module
+meson setup build
+ninja -C build
+sudo ninja -C build install
 
 ### Alternative: swaylock-effects (blur, vignette, clock)
 
