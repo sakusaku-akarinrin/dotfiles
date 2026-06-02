@@ -2,15 +2,10 @@
 # │ ✉️  Violet Evergarden · Alacritty Config ✉️ │
 # │ "I want to know what 'I love you' means."   │
 # ╰────────────────────────────────────────────╯
-#
-# Palette:
-#   Violet iris ...... #8888cc    Cursor / active accent (her eyes)
-#   Golden letter .... #d4b06a    Yellow (warm highlight — her hair)
-#   Crimson seal ..... #c04858    Red (errors / wax seal)
-#   Emerald brooch ... #5a9e7a    Green (success — her brooch)
-#   Navy uniform ..... #5a6088    Blue (muted — her uniform)
-#   Ivory paper ...... #f0e8d8    Foreground text (letter paper)
-#   Midnight ink ..... #100e1a    Background (deepest navy night)
+
+[general]
+import = ["~/.config/alacritty/themes/violet-evergarden.toml"]
+live_config_reload = true
 
 [env]
 TERM = "alacritty"
@@ -22,11 +17,10 @@ padding = { x = 8, y = 4 }
 dynamic_padding = false
 
 [font]
-size = 11.0
+size = 11
 
 [font.normal]
 family = "JetBrains Mono"
-style = "Regular"
 
 [font.bold]
 family = "JetBrains Mono"
@@ -45,49 +39,6 @@ semantic_escape_chars = ",│`|:\\\"' ()[]{}<>\t"
 [cursor]
 style = { shape = "Beam", blinking = "On" }
 vi_mode_style = { shape = "Block", blinking = "Off" }
-
-[colors]
-[colors.primary]
-foreground = "#f0e8d8"
-background = "#100e1a"
-
-[colors.cursor]
-text = "#100e1a"
-cursor = "#8888cc"
-
-[colors.vi_mode_cursor]
-text = "#100e1a"
-cursor = "#d4b06a"
-
-[colors.normal]
-black   = "#141224"
-red     = "#c04858"
-green   = "#5a9e7a"
-yellow  = "#d4b06a"
-blue    = "#7888b8"
-magenta = "#9888b8"
-cyan    = "#78a8a0"
-white   = "#d0c8b8"
-
-[colors.bright]
-black   = "#3a3848"
-red     = "#d87888"
-green   = "#78b890"
-yellow  = "#e8c888"
-blue    = "#98a8d0"
-magenta = "#b0a0d0"
-cyan    = "#98c0b8"
-white   = "#f0e8d8"
-
-[colors.dim]
-black   = "#141224"
-red     = "#a03848"
-green   = "#4a8a6a"
-yellow  = "#b09050"
-blue    = "#6070a0"
-magenta = "#8070a0"
-cyan    = "#608a88"
-white   = "#a8a098"
 
 [mouse]
 hide_when_typing = true

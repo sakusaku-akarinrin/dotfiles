@@ -12,14 +12,18 @@ dotfiles/
 │   ├── niri/config.kdl
 │   ├── waybar/config, style.css, lang.sh
 │   ├── fuzzel/fuzzel.ini
-│   ├── alacritty/alacritty.toml
+│   ├── alacritty/
+│   │   ├── alacritty.toml
+│   │   └── themes/<theme>.toml
 │   └── swaylock/config
 │
 └── violet-evergarden/      ✉️ Violet iris blue — quiet & dignified
     ├── niri/config.kdl
     ├── waybar/config, style.css, lang.sh
     ├── fuzzel/fuzzel.ini
-    ├── alacritty/alacritty.toml
+    ├── alacritty/
+    │   ├── alacritty.toml
+    │   └── themes/<theme>.toml
     └── swaylock/config
 ```
 
@@ -71,6 +75,8 @@ cp $THEME/fuzzel/fuzzel.ini ~/.config/fuzzel/fuzzel.ini
 
 # Alacritty (terminal)
 cp $THEME/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
+mkdir -p ~/.config/alacritty/themes
+cp $THEME/alacritty/themes/*.toml ~/.config/alacritty/themes/
 
 # Swaylock (screen locker)
 cp $THEME/swaylock/config ~/.config/swaylock/config

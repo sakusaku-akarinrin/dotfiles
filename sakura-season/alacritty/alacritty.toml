@@ -2,14 +2,10 @@
 # │  🌸  Akane Sakurai · Alacritty Config  🌸 │
 # │  Sakura Season — warm, soft, gentle.      │
 # ╰────────────────────────────────────────────╯
-#
-# Palette:
-#   Cherry blossom ... #f0a0b0    Cursor / active accent
-#   Pale rose ........ #d4a8b8    Borders / subtle highlights
-#   Warm white ....... #f0e4e8    Foreground text
-#   Akane red ........ #d44a5a    Red (errors, warnings)
-#   Soft sage ........ #a0d4a8    Green (success)
-#   Deep night ....... #161218    Background
+
+[general]
+import = ["~/.config/alacritty/themes/sakura-season.toml"]
+live_config_reload = true
 
 [env]
 TERM = "alacritty"
@@ -21,11 +17,10 @@ padding = { x = 8, y = 4 }
 dynamic_padding = false
 
 [font]
-size = 11.0
+size = 11
 
 [font.normal]
 family = "JetBrains Mono"
-style = "Regular"
 
 [font.bold]
 family = "JetBrains Mono"
@@ -44,49 +39,6 @@ semantic_escape_chars = ",│`|:\\\"' ()[]{}<>\t"
 [cursor]
 style = { shape = "Beam", blinking = "On" }
 vi_mode_style = { shape = "Block", blinking = "Off" }
-
-[colors]
-[colors.primary]
-foreground = "#f0e4e8"
-background = "#161218"
-
-[colors.cursor]
-text = "#161218"
-cursor = "#f0a0b0"
-
-[colors.vi_mode_cursor]
-text = "#161218"
-cursor = "#d4a8b8"
-
-[colors.normal]
-black   = "#1a1620"
-red     = "#d44a5a"
-green   = "#a0d4a8"
-yellow  = "#d4c090"
-blue    = "#9098c0"
-magenta = "#c090b0"
-cyan    = "#90c0b8"
-white   = "#d0c0c8"
-
-[colors.bright]
-black   = "#4a4050"
-red     = "#e87088"
-green   = "#b8e4c0"
-yellow  = "#e8d8a8"
-blue    = "#a8b0d8"
-magenta = "#d8a8c8"
-cyan    = "#a8d8d0"
-white   = "#f0e4e8"
-
-[colors.dim]
-black   = "#1a1620"
-red     = "#b03a48"
-green   = "#80b088"
-yellow  = "#b0a070"
-blue    = "#7078a0"
-magenta = "#a07090"
-cyan    = "#70a098"
-white   = "#a098a0"
 
 [mouse]
 hide_when_typing = true
