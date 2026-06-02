@@ -1,6 +1,6 @@
 # ╭────────────────────────────────────────────╮
 # │ ✉️  Violet Evergarden · Swaylock Config ✉️ │
-# │ "I want to know what 'I love you' means."  │
+# │   "I want to know what 'I love you' means." │
 # ╰────────────────────────────────────────────╯
 #
 # Palette:
@@ -8,21 +8,37 @@
 #   Golden letter .... #d4b06a    Key highlight (brass keys)
 #   Crimson seal ..... #c04858    Wrong password (wax seal)
 #   Emerald brooch ... #5a9e7a    Verified (her brooch)
-#   Ivory paper ...... #f0e8d8    Text (letter paper)
-#   Midnight ink ..... #100e1a    Background (deepest navy)
+#   Ivory paper ...... #f0e8d8    Text / clock (letter paper)
+#   Midnight ink ..... #100e1a    Fallback background
 
-color=100e1a
-font="Ubuntu Nerd Font"
-font-size=24
-indicator-radius=120
+# ── Effects ──────────────────────────────
+screenshots
+effect-blur=10x5
+effect-vignette=0.5:0.5
+clock
+fade-in=0.3
+grace=2
+
+# ── Clock format ─────────────────────────
+timestr=%H:%M
+datestr=%A, %d %B %Y
+
+# ── Indicator ────────────────────────────
+indicator-radius=100
 indicator-thickness=8
-line-color=8888cc
+indicator-idle-visible
+font=Adwaita Mono
+font-size=24
+
+# ── Fallback background ──────────────────
+color=100e1a
 
 # ── Idle state ──────────────────────────
 ring-color=8888cc
 inside-color=00000000
 inside-clear-color=00000000
 text-color=f0e8d8e0
+line-color=8888cc
 separator-color=00000000
 
 # ── Key press ───────────────────────────
@@ -50,6 +66,4 @@ bs-hl-caps-lock-color=c09050
 
 # ── Behaviour ───────────────────────────
 show-failed-attempts
-indicator-idle-visible
 ignore-empty-password
-grace=5

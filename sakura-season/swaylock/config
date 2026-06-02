@@ -1,28 +1,44 @@
 # ╭────────────────────────────────────────────╮
 # │  🌸  Akane Sakurai · Swaylock Config  🌸  │
-# │  Sakura Season — soft, warm, welcoming.   │
+# │  Sakura Season — blurred cherry blossoms.  │
 # ╰────────────────────────────────────────────╯
 #
 # Palette:
 #   Cherry blossom ... #f0a0b0    Ring / key highlight
 #   Pale rose ........ #d4a8b8    Line / separator
-#   Warm white ....... #f0e4e8    Text
+#   Warm white ....... #f0e4e8    Text / clock
 #   Akane red ........ #d44a5a    Wrong password
 #   Soft sage ........ #a0d4a8    Verified
-#   Deep night ....... #161218    Background
+#   Deep night ....... #161218    Fallback background
 
-color=161218
-font="Ubuntu Nerd Font"
-font-size=24
-indicator-radius=120
+# ── Effects ──────────────────────────────
+screenshots
+effect-blur=7x5
+effect-vignette=0.4:0.4
+clock
+fade-in=0.2
+grace=2
+
+# ── Clock format ─────────────────────────
+timestr=%H:%M
+datestr=%A, %d %B %Y
+
+# ── Indicator ────────────────────────────
+indicator-radius=100
 indicator-thickness=8
-line-color=d4a8b8
+indicator-idle-visible
+font=Adwaita Mono
+font-size=24
+
+# ── Fallback background ──────────────────
+color=161218
 
 # ── Idle state ──────────────────────────
 ring-color=f0a0b0
 inside-color=00000000
 inside-clear-color=00000000
 text-color=f0e4e8e0
+line-color=d4a8b8
 separator-color=00000000
 
 # ── Key press ───────────────────────────
@@ -50,6 +66,4 @@ bs-hl-caps-lock-color=d4a060
 
 # ── Behaviour ───────────────────────────
 show-failed-attempts
-indicator-idle-visible
 ignore-empty-password
-grace=5

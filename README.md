@@ -60,8 +60,9 @@ Quiet, dignified, and precise. Violet iris meets golden brass.
 # Wayland compositor + tools
 sudo dnf install niri waybar fuzzel alacritty
 
-# Screen locker
-sudo dnf install swaylock
+# Screen locker — swaylock-effects (blur, vignette, clock, fade-in)
+sudo dnf copr enable eddsalkield/swaylock-effects
+sudo dnf install swaylock-effects
 
 # Audio (volume keys, mute, media controls)
 sudo dnf install wireplumber playerctl
@@ -77,7 +78,7 @@ sudo dnf install brightnessctl
 # Download from https://www.nerdfonts.com or:
 sudo dnf install jetbrains-mono-nf-fonts
 
-# Adwaita Mono (for alacritty — ships with GNOME)
+# Adwaita Mono (for alacritty, swaylock — ships with GNOME)
 # Already installed if you had GNOME. Verify:
 fc-list | grep Adwaita
 ```
@@ -140,7 +141,16 @@ pkill -SIGUSR2 waybar
 
 ## Lock screen
 
-Super+Alt+L triggers **swaylock** — minimal, reliable, and fully themed per palette.
+Super+Alt+L triggers **swaylock-effects** with these effects per theme:
+
+| Effect | Sakura Season | Violet Evergarden |
+|---|---|---|
+| Screenshot bg | ✅ | ✅ |
+| Blur | `7x5` (soft) | `10x5` (deeper) |
+| Vignette | `0.4:0.4` | `0.5:0.5` |
+| Clock | ✅ | ✅ |
+| Fade-in | `0.2s` | `0.3s` |
+| Grace | 2s | 2s |
 
 The niri keybind is already in each theme's config:
 
@@ -148,4 +158,4 @@ The niri keybind is already in each theme's config:
 Super+Alt+L { spawn "swaylock"; }
 ```
 
-Swaylock reads its ring colors (idle, verifying, wrong, cleared) from `~/.config/swaylock/config`.
+Swaylock-effects is a drop-in replacement — same binary name, same config format, just with extra effect flags.
