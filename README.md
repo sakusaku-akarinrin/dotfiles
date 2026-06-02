@@ -63,10 +63,18 @@ Quiet, dignified, and precise. Violet iris meets golden brass.
 sudo dnf install niri waybar fuzzel alacritty
 
 # Screen locker (pick one or both)
-# gtklock + modules (GNOME-style interactive)
+# gtklock — GNOME-style interactive lock screen
 sudo dnf copr enable wef/gtklock
-sudo dnf install gtklock gtklock-userinfo-module gtklock-powerbar-module
-# swaylock (minimal / lightweight)
+sudo dnf install gtklock
+
+# Optional gtklock modules (user avatar + power buttons):
+#   git clone https://github.com/jovanlanik/gtklock-userinfo-module
+#   cd gtklock-userinfo-module && make && sudo make install
+#   git clone https://github.com/jovanlanik/gtklock-powerbar-module
+#   cd gtklock-powerbar-module && make && sudo make install
+# Then uncomment the modules= line in config.ini
+
+# swaylock — minimal / lightweight
 sudo dnf install swaylock
 
 # Audio (volume keys, mute, media controls)
@@ -151,11 +159,15 @@ pkill -SIGUSR2 waybar
 
 ## gtklock features
 
+Works out of the box with just `sudo dnf copr enable wef/gtklock && sudo dnf install gtklock`.
+
 - **Dynamic idle hide** — after 5 seconds, the input form fades away leaving only a large clock. Press any key or move the mouse to bring it back.
-- **User avatar + name** — shows your GNOME user info via `userinfo-module`.
-- **Power bar** — shutdown, reboot, and suspend buttons via `powerbar-module`.
 - **Wrong password feedback** — input border and clock turn theme-red for visual confirmation.
 - **Per-monitor styling** — use `window#eDP-1` / `window#HDMI-A-1` selectors for different wallpapers per output.
+
+With modules (build from source, see Dependencies above):
+- **User avatar + name** — via `userinfo-module`
+- **Power bar** — shutdown, reboot, suspend via `powerbar-module`
 
 ## Niri keybind needed
 
