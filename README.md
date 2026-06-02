@@ -60,9 +60,17 @@ Quiet, dignified, and precise. Violet iris meets golden brass.
 # Wayland compositor + tools
 sudo dnf install niri waybar fuzzel alacritty
 
-# Screen locker — swaylock-effects (blur, vignette, clock, fade-in)
-sudo dnf copr enable eddsalkield/swaylock-effects
-sudo dnf install swaylock-effects
+# Screen locker — swaylock-effects (build from source)
+# COPR packages an outdated fork; the jirutka fork supports ext-session-lock-v1 (Niri).
+sudo dnf install meson gcc wayland-devel pam-devel cairo-devel \
+  libxkbcommon-devel gdk-pixbuf2-devel scdoc git
+git clone https://github.com/jirutka/swaylock-effects
+cd swaylock-effects
+meson setup build
+ninja -C build
+sudo ninja -C build install
+# PAM config installs to /usr/local by default — copy to where Linux reads it:
+sudo cp /usr/local/etc/pam.d/swaylock /etc/pam.d/swaylock
 
 # Audio (volume keys, mute, media controls)
 sudo dnf install wireplumber playerctl
@@ -141,7 +149,12 @@ pkill -SIGUSR2 waybar
 
 ## Lock screen
 
-Super+Alt+L triggers **swaylock-effects** with these effects per theme:
+Super+Alt+L triggers **swaylock-effects** (jirutka fork, built from source — see Dependencies).
+
+The jirutka fork uses `ext-session-lock-v1`, which Niri supports. The Fedora COPR packages
+the older mortie fork which requires `wlr-input-inhibitor` (wlroots-only, not available on Niri).
+
+Effects per theme:
 
 | Effect | Sakura Season | Violet Evergarden |
 |---|---|---|
@@ -157,5 +170,3 @@ The niri keybind is already in each theme's config:
 ```kdl
 Super+Alt+L { spawn "swaylock"; }
 ```
-
-Swaylock-effects is a drop-in replacement — same binary name, same config format, just with extra effect flags.
