@@ -51,6 +51,10 @@ window {
 
 /* ── Password Input — Clean & Focused ──── */
 
+#input-label {
+    font-size: 0;
+}
+
 #input-field {
     background: rgba(240, 160, 176, 0.06);
     border: 1px solid rgba(212, 168, 184, 0.25);
