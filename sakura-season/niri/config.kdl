@@ -193,7 +193,7 @@ binds {
     // ── Launchers ───────────────────────
     Mod+Return hotkey-overlay-title="Terminal (Alacritty)"  { spawn "alacritty"; }
     Mod+D      hotkey-overlay-title="App Launcher (fuzzel)" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock (swaylock)"      { spawn "swaylock"; }
+    Super+Alt+L hotkey-overlay-title="Lock (gtklock)"   { spawn "gtklock"; }
 
     // Screen reader toggle.
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null {

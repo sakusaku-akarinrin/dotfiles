@@ -2,7 +2,7 @@
 
 Gentle. Professional. Organized.
 
-Two themes for Niri + Waybar + Fuzzel + Alacritty + Swaylock — switch with a single cp command.
+Two themes for Niri + Waybar + Fuzzel + Alacritty + gtklock — switch with a single cp command.
 
 ## What's inside
 
@@ -14,8 +14,9 @@ dotfiles/
 │   ├── fuzzel/fuzzel.ini
 │   ├── alacritty/
 │   │   ├── alacritty.toml
-│   │   └── themes/<theme>.toml
-│   └── swaylock/config
+│   │   └── themes/sakura-season.toml
+│   ├── swaylock/config
+│   └── gtklock/config.ini, style.css
 │
 └── violet-evergarden/      ✉️ Violet iris blue — quiet & dignified
     ├── niri/config.kdl
@@ -23,8 +24,9 @@ dotfiles/
     ├── fuzzel/fuzzel.ini
     ├── alacritty/
     │   ├── alacritty.toml
-    │   └── themes/<theme>.toml
-    └── swaylock/config
+    │   └── themes/violet-evergarden.toml
+    ├── swaylock/config
+    └── gtklock/config.ini, style.css
 ```
 
 ## Themes
@@ -78,20 +80,38 @@ cp $THEME/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 mkdir -p ~/.config/alacritty/themes
 cp $THEME/alacritty/themes/*.toml ~/.config/alacritty/themes/
 
-# Swaylock (screen locker)
+# Swaylock (minimal screen locker)
 cp $THEME/swaylock/config ~/.config/swaylock/config
+
+# gtklock (GNOME-style interactive screen locker)
+mkdir -p ~/.config/gtklock
+cp $THEME/gtklock/config.ini ~/.config/gtklock/config.ini
+cp $THEME/gtklock/style.css ~/.config/gtklock/style.css
+
+# Prerequisite: install gtklock modules
+sudo dnf install gtklock gtklock-userinfo-module gtklock-powerbar-module
 
 # Reload
 niri msg action quit-and-replace  # or just restart Niri
 pkill -SIGUSR2 waybar
 ```
 
-## Niri keybind needed
+## gtklock features
 
-Add this to your Niri config so the keyboard layout indicator updates on switch:
+- **Dynamic idle hide** — after 5 seconds, the input form fades away leaving only a large clock. Press any key or move the mouse to bring it back.
+- **User avatar + name** — shows your GNOME user info via `userinfo-module`.
+- **Power bar** — shutdown, reboot, and suspend buttons via `powerbar-module`.
+- **Wrong password feedback** — input border and clock turn theme-red for visual confirmation.
+- **Per-monitor styling** — use `window#eDP-1` / `window#HDMI-A-1` selectors for different wallpapers per output.
+
+## Niri keybind needed
 
 ```kdl
 Mod+Space {
     spawn-sh "niri msg action switch-layout next; pkill -SIGRTMIN+1 waybar";
 }
+
+# Lock screen (choose one):
+Super+Alt+L { spawn "gtklock"; }      # GNOME-style interactive
+# Super+Alt+L { spawn "swaylock"; }   # minimal / lightweight
 ```
