@@ -2,7 +2,7 @@
 
 Gentle. Professional. Organized.
 
-Two themes for Niri + Waybar + Fuzzel + Alacritty + screen locker — switch with a single cp command.
+Two themes for Niri + Waybar + Fuzzel + Alacritty + gtklock — switch with a single cp command.
 
 ## What's inside
 
@@ -15,8 +15,8 @@ dotfiles/
 │   ├── alacritty/
 │   │   ├── alacritty.toml
 │   │   └── themes/sakura-season.toml
-│   ├── swaylock/config
-│   └── gtklock/config.ini, style.css
+│   ├── gtklock/config.ini, style.css
+│   └── swaylock/config
 │
 └── violet-evergarden/      ✉️ Violet iris blue — quiet & dignified
     ├── niri/config.kdl
@@ -25,8 +25,8 @@ dotfiles/
     ├── alacritty/
     │   ├── alacritty.toml
     │   └── themes/violet-evergarden.toml
-    ├── swaylock/config
-    └── gtklock/config.ini, style.css
+    ├── gtklock/config.ini, style.css
+    └── swaylock/config
 ```
 
 ## Themes
@@ -69,31 +69,12 @@ sudo dnf install wireplumber playerctl
 sudo dnf install brightnessctl
 ```
 
-### Screen locker — pick one (or both)
-
-#### swaylock-effects (blur, vignette, clock, fade-in)
-
-Build from source — the jirutka fork uses `ext-session-lock-v1` (Niri's protocol).
-The Fedora COPR packages the older mortie fork which requires `wlr-input-inhibitor` (wlroots-only).
-
-```bash
-sudo dnf install meson gcc wayland-devel pam-devel cairo-devel \
-  libxkbcommon-devel gdk-pixbuf2-devel scdoc git
-git clone https://github.com/jirutka/swaylock-effects
-cd swaylock-effects
-meson setup build
-ninja -C build
-sudo ninja -C build install
-# PAM config installs to /usr/local by default — copy to where Linux reads it:
-sudo cp /usr/local/etc/pam.d/swaylock /etc/pam.d/swaylock
-```
-
-#### gtklock (GNOME-style interactive lock screen)
+### Screen locker — gtklock (GNOME-style interactive)
 
 ```bash
 sudo dnf copr enable wef/gtklock
 sudo dnf install gtklock
-# Same PAM fix as swaylock:
+# PAM config may install to /usr/local — copy to where Linux reads it:
 sudo cp /usr/local/etc/pam.d/gtklock /etc/pam.d/gtklock
 ```
 
@@ -103,7 +84,21 @@ git clone https://github.com/jovanlanik/gtklock-userinfo-module
 cd gtklock-userinfo-module && make && sudo make install
 git clone https://github.com/jovanlanik/gtklock-powerbar-module
 cd gtklock-powerbar-module && make && sudo make install
-# Then uncomment the modules= line in config.ini
+```
+
+### Alternative: swaylock-effects (blur, vignette, clock)
+
+Build from source — the jirutka fork uses `ext-session-lock-v1` (Niri's protocol).
+
+```bash
+sudo dnf install meson gcc wayland-devel pam-devel cairo-devel \
+  libxkbcommon-devel gdk-pixbuf2-devel scdoc git
+git clone https://github.com/jirutka/swaylock-effects
+cd swaylock-effects
+meson setup build
+ninja -C build
+sudo ninja -C build install
+sudo cp /usr/local/etc/pam.d/swaylock /etc/pam.d/swaylock
 ```
 
 ### Fonts
@@ -112,7 +107,7 @@ cd gtklock-powerbar-module && make && sudo make install
 # Nerd Font (for waybar icons — 🌸 💌  etc.)
 sudo dnf install jetbrains-mono-nf-fonts
 
-# Adwaita Mono (for alacritty, swaylock — ships with GNOME)
+# Adwaita Mono (for alacritty, gtklock — ships with GNOME)
 fc-list | grep Adwaita
 ```
 
@@ -164,11 +159,13 @@ cp $THEME/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 mkdir -p ~/.config/alacritty/themes
 cp $THEME/alacritty/themes/*.toml ~/.config/alacritty/themes/
 
-# Screen locker — pick one (or both):
-cp $THEME/swaylock/config ~/.config/swaylock/config
-# mkdir -p ~/.config/gtklock
-# cp $THEME/gtklock/config.ini ~/.config/gtklock/config.ini
-# cp $THEME/gtklock/style.css ~/.config/gtklock/style.css
+# gtklock (screen locker)
+mkdir -p ~/.config/gtklock
+cp $THEME/gtklock/config.ini ~/.config/gtklock/config.ini
+cp $THEME/gtklock/style.css ~/.config/gtklock/style.css
+
+# Or swaylock instead:
+# cp $THEME/swaylock/config ~/.config/swaylock/config
 
 # Reload
 niri msg action quit-and-replace
@@ -178,15 +175,29 @@ pkill -SIGUSR2 waybar
 ## Lock screen
 
 Super+Alt+L triggers your chosen locker. Both are configured in the Niri keybinds —
-comment/uncomment to switch:
+swap the comment to switch:
 
 ```kdl
 // Lock screen — pick one:
-Super+Alt+L { spawn "swaylock"; }
-// Super+Alt+L { spawn "gtklock"; }
+Super+Alt+L { spawn "gtklock"; }
+// Super+Alt+L { spawn "swaylock"; }
 ```
 
-### swaylock-effects
+### gtklock (default)
+
+GNOME-style interactive lock screen with full CSS theming.
+
+| Feature | Sakura Season | Violet Evergarden |
+|---|---|---|
+| Large clock | ✅ (72px, pink glow) | ✅ (72px, violet glow) |
+| Date display | ✅ (`%A, %B %d`) | ✅ (`%A, %B %d`) |
+| Idle auto-hide | ✅ (5s, clock scales to 96px) | ✅ (5s, clock turns golden) |
+| Wrong p/w feedback | ✅ (red flash, clock turns red) | ✅ (crimson flash, clock turns red) |
+| Unlock button | ✅ (themed hover) | ✅ (golden hover) |
+| User avatar module | ✅ | ✅ |
+| Power bar module | ✅ | ✅ |
+
+### swaylock-effects (alternative)
 
 | Effect | Sakura Season | Violet Evergarden |
 |---|---|---|
@@ -196,15 +207,3 @@ Super+Alt+L { spawn "swaylock"; }
 | Clock | ✅ | ✅ |
 | Fade-in | `0.2s` | `0.3s` |
 | Grace | 2s | 2s |
-
-### gtklock
-
-| Feature | Sakura Season | Violet Evergarden |
-|---|---|---|
-| Interactive input | ✅ | ✅ |
-| Clock | ✅ (large, themed) | ✅ (large, themed) |
-| Idle auto-hide | ✅ (5s) | ✅ (5s) |
-| Wrong p/w feedback | ✅ (red glow) | ✅ (red glow) |
-| CSS styling | ✅ | ✅ |
-| User avatar module | optional | optional |
-| Power bar module | optional | optional |

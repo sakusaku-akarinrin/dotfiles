@@ -195,8 +195,8 @@ binds {
     Mod+D      hotkey-overlay-title="App Launcher (fuzzel)" { spawn "fuzzel"; }
 
     // Lock screen — pick one:
-    Super+Alt+L hotkey-overlay-title="Lock (swaylock)"   { spawn "swaylock"; }
-    // Super+Alt+L hotkey-overlay-title="Lock (gtklock)" { spawn "gtklock"; }
+    Super+Alt+L hotkey-overlay-title="Lock (gtklock)"   { spawn "gtklock"; }
+    // Super+Alt+L hotkey-overlay-title="Lock (swaylock)" { spawn "swaylock"; }
 
     // Screen reader toggle.
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null {
