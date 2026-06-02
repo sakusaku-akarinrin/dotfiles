@@ -2,7 +2,7 @@
 
 Gentle. Professional. Organized.
 
-Two themes for Niri + Waybar — switch with a single cp command.
+Two themes for Niri + Waybar + Fuzzel + Alacritty — switch with a single cp command.
 
 ## What's inside
 
@@ -10,17 +10,15 @@ Two themes for Niri + Waybar — switch with a single cp command.
 dotfiles/
 ├── sakura-season/          🌸 Cherry blossom pink — soft & warm
 │   ├── niri/config.kdl
-│   └── waybar/
-│       ├── config
-│       ├── style.css
-│       └── lang.sh
+│   ├── waybar/config, style.css, lang.sh
+│   ├── fuzzel/fuzzel.ini
+│   └── alacritty/alacritty.toml
 │
 └── violet-evergarden/      ✉️ Violet iris blue — quiet & dignified
     ├── niri/config.kdl
-    └── waybar/
-        ├── config
-        ├── style.css
-        └── lang.sh
+    ├── waybar/config, style.css, lang.sh
+    ├── fuzzel/fuzzel.ini
+    └── alacritty/alacritty.toml
 ```
 
 ## Themes
@@ -65,6 +63,12 @@ cp $THEME/waybar/config ~/.config/waybar/config
 cp $THEME/waybar/style.css ~/.config/waybar/style.css
 cp $THEME/waybar/lang.sh ~/.config/waybar/lang.sh
 chmod +x ~/.config/waybar/lang.sh
+
+# Fuzzel (app launcher)
+cp $THEME/fuzzel/fuzzel.ini ~/.config/fuzzel/fuzzel.ini
+
+# Alacritty (terminal)
+cp $THEME/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 
 # Reload
 niri msg action quit-and-replace  # or just restart Niri
