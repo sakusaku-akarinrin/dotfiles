@@ -20,14 +20,14 @@ dynamic_padding = false
 size = 11
 
 [font.normal]
-family = "monospace"
+family = "Adwaita Mono"
 
 [font.bold]
-family = "monospace"
+family = "Adwaita Mono"
 style = "Bold"
 
 [font.italic]
-family = "monospace"
+family = "Adwaita Mono"
 style = "Italic"
 
 [scrolling]
