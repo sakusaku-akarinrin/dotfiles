@@ -6,7 +6,7 @@
     // ── Module Layout ──────────────────────
     "modules-left":  ["niri/workspaces"],
     "modules-center": ["niri/window"],
-    "modules-right": ["custom/language", "pulseaudio", "network", "cpu", "memory", "battery", "tray", "clock"],
+    "modules-right": ["custom/language", "pulseaudio", "network", "cpu", "memory", "battery", "custom/sakura", "tray", "clock"],
 
     // ── Niri Workspaces ────────────────────
     "niri/workspaces": {
@@ -33,10 +33,18 @@
 
     // ── Custom: Keyboard Language ──────────
     "custom/language": {
-        "format": " {}",
+        "format": "⌨️ {}",
         "exec": "~/.config/waybar/lang.sh",
         "interval": "once",
         "signal": 1,
+        "tooltip": false
+    },
+
+    // ── Custom: Sakura Separator ──────────
+    "custom/sakura": {
+        "format": "🌸",
+        "interval": "once",
+        "exec": "echo",
         "tooltip": false
     },
 
@@ -48,21 +56,21 @@
 
     // ── Clock ──────────────────────────────
     "clock": {
-        "format": "{:%a %d %b  %H:%M}",
-        "format-alt": "{:%Y-%m-%d %H:%M:%S}",
+        "format": "🕐 {:%a %d %b  %H:%M}",
+        "format-alt": "🕐 {:%Y-%m-%d %H:%M:%S}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
 
     // ── CPU ────────────────────────────────
     "cpu": {
-        "format": " {usage}%",
+        "format": "🖥️ {usage}%",
         "interval": 2,
         "tooltip": true
     },
 
     // ── Memory ─────────────────────────────
     "memory": {
-        "format": " {}%",
+        "format": "💾 {}%",
         "interval": 5,
         "tooltip": true
     },
@@ -74,26 +82,26 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
+        "format": "🔋 {capacity}% {icon}",
         "format-icons": ["", "", "", "", ""],
-        "format-charging": "{capacity}% ",
+        "format-charging": "⚡ {capacity}% ",
         "tooltip": true
     },
 
     // ── Network ─────────────────────────────
     "network": {
-        "format-wifi": "{essid}  {signalStrength}%",
-        "format-ethernet": " {ipaddr}",
-        "format-disconnected": " ⚠ Offline",
+        "format-wifi": "📶 {essid}  {signalStrength}%",
+        "format-ethernet": "🌐 {ipaddr}",
+        "format-disconnected": " ⚠️ Offline",
         "tooltip-format": "{ifname} — {ipaddr}/{cidr}",
         "on-click": "nm-connection-editor"
     },
 
     // ── PulseAudio ─────────────────────────
     "pulseaudio": {
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-muted": " Muted",
+        "format": "🔊 {volume}% {icon}",
+        "format-bluetooth": "🔊 {volume}% {icon}",
+        "format-muted": "🔇 Muted",
         "format-icons": {
             "headphones": "",
             "handsfree": "",

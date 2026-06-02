@@ -105,6 +105,13 @@ window#waybar {
     padding: 0 12px;
 }
 
+#custom-sakura {
+    color: #f0a0b0;
+    font-size: 13px;
+    padding: 0 2px;
+    opacity: 0.7;
+}
+
 #custom-language {
     color: #d4a8b8;
     font-weight: 600;
