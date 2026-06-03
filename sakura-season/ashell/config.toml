@@ -72,6 +72,10 @@ peripheral_battery_format = "Icon"
 [appearance]
 style = "Islands"
 font_name = "Ubuntu Nerd Font"
+opacity = 0.85
+
+[appearance.menu]
+backdrop = 0.2
 
 primary_color = "#f0a0b0"
 success_color = "#a0d4a8"
