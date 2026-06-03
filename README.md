@@ -168,6 +168,9 @@ fc-list | grep -i "AdwaitaMono.*Nerd"
 # Wallpaper (animated transitions)
 sudo dnf install swww
 
+# Session lifecycle (DMS — enables proper login/logout flow)
+sudo dnf install dms
+
 # Notifications
 sudo dnf install mako
 
@@ -229,6 +232,9 @@ cp $THEME/gtklock/style.css ~/.config/gtklock/style.css
 # Wallpaper — place your image here:
 mkdir -p ~/.config/wallpaper
 # cp ~/Pictures/Wallpapers/sakura.jpg ~/.config/wallpaper/wallpaper.png
+
+# Register DMS session service (for proper session lifecycle)
+systemctl --user add-wants niri.service dms
 
 # Reload Niri
 niri msg action quit-and-replace
