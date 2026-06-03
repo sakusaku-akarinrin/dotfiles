@@ -74,9 +74,6 @@ style = "Islands"
 font_name = "Ubuntu Nerd Font"
 opacity = 0.85
 
-[appearance.menu]
-backdrop = 0.2
-
 primary_color = "#f0a0b0"
 success_color = "#a0d4a8"
 warning_color = "#e8a870"
@@ -89,6 +86,9 @@ workspace_colors = [ "#f0a0b0", "#d4a8b8" ]
 base = "#161218"
 weak = "#2a222c"
 strong = "#3e3238"
+
+[appearance.menu]
+backdrop = 0.2
 
 # ── OSD (On-Screen Display) ─────────────
 [osd]
