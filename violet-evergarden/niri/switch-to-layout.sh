@@ -11,7 +11,7 @@ set -eu
 
 TARGET="${1:-0}"
 
-LAYOUTS="$(niri msg keyboard-layouts)"
+LAYOUTS="$(niri msg --json keyboard-layouts)"
 CURRENT="$(echo "$LAYOUTS" | jq -r '.current_idx')"
 COUNT="$(echo "$LAYOUTS" | jq -r '.names | length')"
 
