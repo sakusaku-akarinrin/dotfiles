@@ -215,6 +215,11 @@ window-rule {
 window-rule {
     match app-id="^Alacritty$"
 
+    // Draw border around the window, not as a solid rectangle behind it.
+    // Without this, the focus ring/border solid rectangle shows through the
+    // transparent background and the blur acts on the border color, not the wallpaper.
+    draw-border-with-background false
+
     background-effect {
         blur true
     }
