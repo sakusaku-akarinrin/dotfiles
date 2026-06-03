@@ -128,7 +128,7 @@ spawn-at-startup "ashell"
 
 // Wallpaper — animated (swww)
 spawn-at-startup "swww-daemon"
-spawn-sh-at-startup "sleep 0.5 && swww img ~/.config/wallpaper/wallpaper.png"
+spawn-sh-at-startup "sleep 0.5 && swww img ~/.config/wallpaper/wallpaper.jpg"
 
 // Optional: notification daemon
 // spawn-at-startup "mako"

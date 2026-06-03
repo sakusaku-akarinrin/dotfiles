@@ -243,7 +243,7 @@ cp $THEME/gtklock/style.css ~/.config/gtklock/style.css
 
 # Wallpaper — place your image here:
 mkdir -p ~/.config/wallpaper
-# cp ~/Pictures/Wallpapers/sakura.jpg ~/.config/wallpaper/wallpaper.png
+# cp ~/Pictures/Wallpapers/violet.jpg ~/.config/wallpaper/wallpaper.jpg
 
 # Register DMS session service (for proper session lifecycle)
 systemctl --user add-wants niri.service dms
