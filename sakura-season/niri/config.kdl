@@ -183,6 +183,15 @@ recent-windows {
     }
 }
 
+// ─── Blur — Acrylic Background (26.04+) ───
+
+blur {
+    passes 3
+    offset 3.0
+    noise 0.02
+    saturation 1.5
+}
+
 // ─── Animations — Smooth & Gentle ───────────
 
 animations {
@@ -196,6 +205,15 @@ animations {
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
+}
+
+// Alacritty: acrylic blur effect
+window-rule {
+    match app-id="^Alacritty$"
+
+    background-effect {
+        blur true
+    }
 }
 
 // Firefox PiP: float by default (don't steal a whole column).
