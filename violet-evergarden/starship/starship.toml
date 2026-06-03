@@ -4,12 +4,13 @@
 # ╰────────────────────────────────────────────╯
 # Palette
 # ─────────────────────────────────────────
-# Violet iris ..... #8888cc  (username)
-# Golden letter ... #d4b06a  (emoji accent)
-# Navy ............ #5a6088  (separator)
-# Ivory paper ..... #f0e8d8  (directory)
+# Violet iris ..... #8888cc  (username fg)
+# Golden letter ... #d4b06a  (emoji fg)
+# Ivory paper ..... #f0e8d8  (directory fg)
 # Crimson seal .... #c04858  (urgent)
-# Midnight ink .... #18152a  (segment bg)
+# Deep indigo ..... #201840  (username bg)
+# Deep violet ..... #282048  (emoji bg)
+# Midnight ink .... #181530  (directory bg)
 # Shell bg ........ #121212  (terminal background)
 
 "$schema" = 'https://starship.rs/config-schema.json'
@@ -17,9 +18,7 @@
 format = """
 \
 $username\
-[ > ](fg:#5a6088 bg:#18152a)\
-[✉️](fg:#d4b06a bg:#18152a)\
-[ > ](fg:#5a6088 bg:#18152a)\
+[✉️](fg:#d4b06a bg:#282048)\
 $directory\
 $git_branch\
 $git_status\
@@ -35,14 +34,14 @@ add_newline = false
 # ─── Username ──────────────────────────────
 
 [username]
-style_user = "fg:#8888cc bg:#18152a bold"
+style_user = "fg:#8888cc bg:#201840 bold"
 format = "[$user]($style)"
 show_always = true
 
 # ─── Directory ──────────────────────────────
 
 [directory]
-style = "fg:#f0e8d8 bg:#18152a"
+style = "fg:#f0e8d8 bg:#181530"
 format = "[$path]($style)"
 truncation_length = 2
 truncation_symbol = "…/"
@@ -117,5 +116,5 @@ success_symbol = "[❯](bold #8888cc)"
 error_symbol = "[❯](bold #c04858)"
 vimcmd_symbol = "[❮](bold #5a6088)"
 vimcmd_replace_one_symbol = "[❮](bold #d4b06a)"
-vimcmd_replace_symbol = "[❮](bold #8888cc)"
+vimcmd_replace_symbol = "[❮)](bold #8888cc)"
 format = "$symbol "
