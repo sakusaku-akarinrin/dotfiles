@@ -1,0 +1,108 @@
+# ╭────────────────────────────────────────────╮
+# │  🌸  Sakura Season · Starship Prompt  🌸  │
+# │  Warm. Soft. Gentle.                       │
+# ╰────────────────────────────────────────────╯
+# Palette
+# ─────────────────────────────────────────
+# Cherry blossom ... #f0a0b0  (active accent)
+# Pale rose ........ #d4a8b8  (border)
+# Lavender grey .... #7b7b9e  (inactive)
+# Madder red ....... #d44a5a  (urgent)
+# Shell bg ......... #121212  (terminal background)
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+\
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$all\
+\n\
+$character\
+"""
+
+# No blank line at the start
+add_newline = false
+
+# ─── Directory ──────────────────────────────
+
+[directory]
+style = "fg:#f0a0b0 bold"
+format = "[$path]($style)"
+truncation_length = 2
+truncation_symbol = "…/"
+home_symbol = "~"
+use_os_path_sep = true
+
+[directory.substitutions]
+"Documents" = "📄 "
+"Downloads" = "⬇️ "
+"Music" = "🎵 "
+"Pictures" = "🖼️ "
+"Projects" = "💻 "
+"dotfiles" = "🌸 dotfiles"
+
+# ─── Git — Branch & Status ──────────────────
+
+[git_branch]
+style = "fg:#d4a8b8"
+format = " on [$symbol$branch]($style)"
+symbol = " "
+
+[git_status]
+style = "fg:#7b7b9e"
+format = '[$all_status$ahead_behind]($style)'
+conflicted = "🏳️ "
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+up_to_date = ""
+untracked = " ?${count}"
+stashed = " 📦"
+modified = " !${count}"
+staged = " ✚${count}"
+renamed = " →${count}"
+deleted = " ✘${count}"
+
+# ─── Runtime Versions — Subtle Right Side ─────
+
+[nodejs]
+style = "fg:#7b7b9e"
+format = " via [$symbol($version)]($style)"
+symbol = " "
+disabled = false
+
+[python]
+style = "fg:#7b7b9e"
+format = " via [$symbol($version)]($style)"
+symbol = "🐍 "
+disabled = false
+
+[rust]
+style = "fg:#7b7b9e"
+format = " via [$symbol($version)]($style)"
+symbol = " "
+disabled = false
+
+[bun]
+style = "fg:#7b7b9e"
+format = " [$symbol($version)]($style)"
+symbol = " "
+disabled = false
+
+# ─── Fill (pushes runtime versions to the right) ──
+
+[fill]
+symbol = ""
+
+# ─── Prompt Character ────────────────────────
+
+[character]
+success_symbol = "[❯](bold #f0a0b0)"
+error_symbol = "[❯](bold #d44a5a)"
+vimcmd_symbol = "[❮](bold #7b7b9e)"
+vimcmd_replace_one_symbol = "[❮](bold #d4a8b8)"
+vimcmd_replace_symbol = "[❮](bold #f0a0b0)"
+format = "$symbol "
