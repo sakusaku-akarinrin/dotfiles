@@ -4,10 +4,11 @@
 # ╰────────────────────────────────────────────╯
 # Palette
 # ─────────────────────────────────────────
-# Cherry blossom ... #f0a0b0  (active accent)
-# Pale rose ........ #d4a8b8  (border)
-# Lavender grey .... #7b7b9e  (inactive)
+# Cherry blossom ... #f0a0b0  (username)
+# Pale rose ........ #d4a8b8  (emoji accent)
+# Lavender grey .... #7b7b9e  (directory)
 # Madder red ....... #d44a5a  (urgent)
+# Dark mauve ....... #1e1820  (segment bg)
 # Shell bg ......... #121212  (terminal background)
 
 "$schema" = 'https://starship.rs/config-schema.json'
@@ -15,6 +16,9 @@
 format = """
 \
 $username\
+[ > ](fg:#5b5b7e bg:#1e1820)\
+[🌸](fg:#d4a8b8 bg:#1e1820)\
+[ > ](fg:#5b5b7e bg:#1e1820)\
 $directory\
 $git_branch\
 $git_status\
@@ -30,14 +34,14 @@ add_newline = false
 # ─── Username ──────────────────────────────
 
 [username]
-style_user = "fg:#f0a0b0 bold"
-format = "[$user]($style)🌸 "
+style_user = "fg:#f0a0b0 bg:#1e1820 bold"
+format = "[$user]($style)"
 show_always = true
 
 # ─── Directory ──────────────────────────────
 
 [directory]
-style = "fg:#f0a0b0 bold"
+style = "fg:#7b7b9e bg:#1e1820"
 format = "[$path]($style)"
 truncation_length = 2
 truncation_symbol = "…/"
