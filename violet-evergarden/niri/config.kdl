@@ -131,8 +131,9 @@ spawn-at-startup "ashell"
 // Formerly waybar — replaced by ashell
 // spawn-at-startup "waybar"
 
-// Optional: wallpaper setter
-// spawn-at-startup "swaybg" "-i" "~/Pictures/Wallpapers/violet-evergarden.jpg" "-m" "fill"
+// Wallpaper — animated (swww)
+spawn-at-startup "swww-daemon"
+spawn-sh-at-startup "sleep 0.5 && swww img ~/.config/wallpaper/wallpaper.png"
 
 // Optional: notification daemon
 // spawn-at-startup "mako"

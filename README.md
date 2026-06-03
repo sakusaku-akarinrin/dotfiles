@@ -141,8 +141,8 @@ fc-list | grep -i "AdwaitaMono.*Nerd"
 ### Optional
 
 ```bash
-# Wallpaper
-sudo dnf install swaybg
+# Wallpaper (animated transitions)
+sudo dnf install swww
 
 # Notifications
 sudo dnf install mako
@@ -193,6 +193,10 @@ cp $THEME/gtklock/style.css ~/.config/gtklock/style.css
 
 # Or swaylock instead:
 # cp $THEME/swaylock/config ~/.config/swaylock/config
+
+# Wallpaper — place your image here:
+mkdir -p ~/.config/wallpaper
+# cp ~/Pictures/Wallpapers/sakura.jpg ~/.config/wallpaper/wallpaper.png
 
 # Reload
 niri msg action quit-and-replace
