@@ -12,6 +12,7 @@
 #   Midnight ink .... #1a1830    Deepest navy bar background
 
 position = "Top"
+region = "th-TH"
 
 [modules]
 left = [ "Workspaces" ]

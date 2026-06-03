@@ -10,6 +10,7 @@
 #   Soft sage ........ #a0d4a8    Positive / charging
 
 position = "Top"
+region = "th-TH"
 
 [modules]
 left = [ "Workspaces" ]
