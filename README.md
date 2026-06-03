@@ -220,6 +220,8 @@ cp $THEME/ashell/config.toml ~/.config/ashell/config.toml
 # Starship (shell prompt)
 mkdir -p ~/.config/starship
 cp $THEME/starship/starship.toml ~/.config/starship/starship.toml
+# Some distros (Fedora) need the path explicitly set
+grep -q 'STARSHIP_CONFIG' ~/.bashrc || echo 'export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"' >> ~/.bashrc
 
 # wlogout (power menu)
 mkdir -p ~/.config/wlogout
