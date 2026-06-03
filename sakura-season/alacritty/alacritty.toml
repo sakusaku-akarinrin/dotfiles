@@ -21,14 +21,14 @@ dynamic_padding = false
 size = 11
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
+family = "AdwaitaMono Nerd Font"
 
 [font.bold]
-family = "JetBrainsMono Nerd Font"
+family = "AdwaitaMono Nerd Font"
 style = "Bold"
 
 [font.italic]
-family = "JetBrainsMono Nerd Font"
+family = "AdwaitaMono Nerd Font"
 style = "Italic"
 
 [scrolling]

@@ -116,30 +116,27 @@ sudo cp /usr/local/etc/pam.d/swaylock /etc/pam.d/swaylock
 
 ### Fonts
 
-These dotfiles use **JetBrainsMono Nerd Font** — the base JetBrains Mono with full icon glyphs
+These dotfiles use **Adwaita Mono Nerd Font** — your familiar Adwaita Mono with full icon glyphs
 for Starship, waybar, fuzzel, and everything that needs Nerd Font symbols.
 
 ```bash
-# 1. Install the base JetBrains Mono font from Fedora
-sudo dnf install jetbrains-mono-fonts-all
+# 1. Download the Nerd Font patched version
+curl -L -o /tmp/AdwaitaMono.tar.xz \
+  https://github.com/ryanoasis/nerd-fonts/releases/latest/download/AdwaitaMono.tar.xz
 
-# 2. Download the Nerd Font patched version (adds icon glyphs)
-curl -L -o /tmp/JetBrainsMono.tar.xz \
-  https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
-
-# 3. Install to your local font directory
+# 2. Install to your local font directory
 mkdir -p ~/.local/share/fonts
-tar -xf /tmp/JetBrainsMono.tar.xz -C ~/.local/share/fonts/
+tar -xf /tmp/AdwaitaMono.tar.xz -C ~/.local/share/fonts/
 
-# 4. Refresh font cache
+# 3. Refresh font cache
 fc-cache -fv
 
-# 5. Verify it's available
-fc-list | grep -i "JetBrainsMono.*Nerd"
-# Expected: JetBrainsMono Nerd Font:style=Regular
+# 4. Verify it's available
+fc-list | grep -i "AdwaitaMono.*Nerd"
+# Expected: AdwaitaMono Nerd Font:style=Regular
 ```
 
-> **Font family name in config:** `"JetBrainsMono Nerd Font"`
+> **Font family name in config:** `"AdwaitaMono Nerd Font"`
 
 ### Optional
 
