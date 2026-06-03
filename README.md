@@ -2,7 +2,7 @@
 
 Gentle. Professional. Organized.
 
-Two themes for Niri + Waybar + Fuzzel + Alacritty + gtklock — switch with a single cp command.
+Two themes for Niri + ashell + Fuzzel + Alacritty + Starship — switch with a single cp command.
 
 ## What's inside
 
@@ -15,6 +15,8 @@ dotfiles/
 │   ├── alacritty/
 │   │   ├── alacritty.toml
 │   │   └── themes/sakura-season.toml
+│   ├── ashell/config.toml
+│   ├── starship/starship.toml
 │   ├── gtklock/config.ini, style.css
 │   └── swaylock/config
 │
@@ -25,6 +27,8 @@ dotfiles/
     ├── alacritty/
     │   ├── alacritty.toml
     │   └── themes/violet-evergarden.toml
+    ├── ashell/config.toml
+    ├── starship/starship.toml
     ├── gtklock/config.ini, style.css
     └── swaylock/config
 ```
@@ -59,15 +63,35 @@ Quiet, dignified, and precise. Violet iris meets golden brass.
 ### Core (required)
 
 ```bash
-# Wayland compositor + tools
-sudo dnf install niri waybar fuzzel alacritty
+# Wayland compositor
+sudo dnf install niri
+
+# Terminal
+sudo dnf install alacritty
+
+# App launcher
+sudo dnf install fuzzel
+
+# Status bar — ashell (replaces waybar)
+sudo dnf copr enable killcrb/ashell
+sudo dnf install ashell
+
+# Shell prompt — Starship
+sudo dnf copr enable atim/starship
+sudo dnf install starship
 
 # Audio (volume keys, mute, media controls)
 sudo dnf install wireplumber playerctl
 
 # Brightness (laptop backlight keys)
 sudo dnf install brightnessctl
+
+# Add starship to your shell (~/.bashrc or ~/.zshrc):
+# eval "$(starship init bash)"   # bash
+# eval "$(starship init zsh)"    # zsh
 ```
+
+> **Waybar** is still included in the repo as a legacy alternative but no longer active — ashell is the current bar.
 
 ### Screen locker — gtklock (GNOME-style interactive)
 
@@ -181,6 +205,14 @@ chmod +x ~/.config/waybar/lang.sh
 # Fuzzel (app launcher)
 cp $THEME/fuzzel/fuzzel.ini ~/.config/fuzzel/fuzzel.ini
 
+# ashell (status bar)
+mkdir -p ~/.config/ashell
+cp $THEME/ashell/config.toml ~/.config/ashell/config.toml
+
+# Starship (shell prompt)
+mkdir -p ~/.config/starship
+cp $THEME/starship/starship.toml ~/.config/starship/starship.toml
+
 # Alacritty (terminal)
 cp $THEME/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 mkdir -p ~/.config/alacritty/themes
@@ -198,9 +230,8 @@ cp $THEME/gtklock/style.css ~/.config/gtklock/style.css
 mkdir -p ~/.config/wallpaper
 # cp ~/Pictures/Wallpapers/sakura.jpg ~/.config/wallpaper/wallpaper.png
 
-# Reload
+# Reload Niri
 niri msg action quit-and-replace
-pkill -SIGUSR2 waybar
 ```
 
 ## Lock screen
