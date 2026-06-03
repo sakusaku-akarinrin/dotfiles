@@ -22,7 +22,6 @@ right = [ "KeyboardLayout", "SystemInfo", [ "Tray", "Tempo", "Settings" ] ]
 visibility_mode = "All"
 group_by_monitor = false
 enable_workspace_filling = true
-workspace_names = ["🌸", "🌸", "🌸", "🌸", "🌸", "🌸", "🌸", "🌸"]
 
 # ── Window Title ─────────────────────────
 [window_title]
