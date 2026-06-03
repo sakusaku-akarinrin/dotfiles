@@ -1,6 +1,6 @@
 # ╭────────────────────────────────────────────╮
 # │  ✉️  Violet Evergarden · Starship Prompt  │
-# │  "I want to know what 'I love you' means." │
+# │  Powerline Style                           │
 # ╰────────────────────────────────────────────╯
 # Palette
 # ─────────────────────────────────────────
@@ -17,9 +17,13 @@
 
 format = """
 \
+[](#201840)\
 $username\
+[](fg:#201840 bg:#282048)\
 [✉️](fg:#d4b06a bg:#282048)\
+[](fg:#282048 bg:#181530)\
 $directory\
+[](fg:#181530)\
 $git_branch\
 $git_status\
 $fill\
@@ -35,14 +39,14 @@ add_newline = false
 
 [username]
 style_user = "fg:#8888cc bg:#201840 bold"
-format = "[$user]($style)"
+format = "[ $user ]($style)"
 show_always = true
 
 # ─── Directory ──────────────────────────────
 
 [directory]
 style = "fg:#f0e8d8 bg:#181530"
-format = "[$path]($style)"
+format = "[ $path ]($style)"
 truncation_length = 2
 truncation_symbol = "…/"
 home_symbol = "~"

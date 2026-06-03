@@ -1,6 +1,6 @@
 # ╭────────────────────────────────────────────╮
 # │  🌸  Sakura Season · Starship Prompt  🌸  │
-# │  Warm. Soft. Gentle.                       │
+# │  Powerline Style                           │
 # ╰────────────────────────────────────────────╯
 # Palette
 # ─────────────────────────────────────────
@@ -17,9 +17,13 @@
 
 format = """
 \
+[](#2a1520)\
 $username\
+[](fg:#2a1520 bg:#2a1a28)\
 [🌸](fg:#d4a8b8 bg:#2a1a28)\
+[](fg:#2a1a28 bg:#1e1e30)\
 $directory\
+[](fg:#1e1e30)\
 $git_branch\
 $git_status\
 $fill\
@@ -35,14 +39,14 @@ add_newline = false
 
 [username]
 style_user = "fg:#f0a0b0 bg:#2a1520 bold"
-format = "[$user]($style)"
+format = "[ $user ]($style)"
 show_always = true
 
 # ─── Directory ──────────────────────────────
 
 [directory]
 style = "fg:#7b7b9e bg:#1e1e30"
-format = "[$path]($style)"
+format = "[ $path ]($style)"
 truncation_length = 2
 truncation_symbol = "…/"
 home_symbol = "~"
