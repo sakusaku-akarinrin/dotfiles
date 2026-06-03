@@ -90,3 +90,14 @@ strong = "#3e3238"
 [osd]
 enabled = true
 timeout = 1500
+
+# ── Animations ──────────────────────────
+[animations]
+enabled = true
+
+# ── Notifications Daemon ────────────────
+[notifications]
+toast_position = "TopRight"
+toast_timeout = 5000
+toast_limit = 5
+toast_max_height = 150
