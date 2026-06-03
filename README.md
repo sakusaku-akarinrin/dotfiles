@@ -17,7 +17,7 @@ dotfiles/
 │   │   └── themes/sakura-season.toml
 │   ├── ashell/config.toml
 │   ├── starship/starship.toml
-│   ├── wlogout/style.css
+│   ├── wlogout/layout, style.css
 │   ├── gtklock/config.ini, style.css
 │   └── swaylock/config
 │
@@ -30,7 +30,7 @@ dotfiles/
     │   └── themes/violet-evergarden.toml
     ├── ashell/config.toml
     ├── starship/starship.toml
-    ├── wlogout/style.css
+    ├── wlogout/layout, style.css
     ├── gtklock/config.ini, style.css
     └── swaylock/config
 ```
@@ -224,8 +224,7 @@ cp $THEME/starship/starship.toml ~/.config/starship/starship.toml
 # wlogout (power menu)
 mkdir -p ~/.config/wlogout
 cp $THEME/wlogout/style.css ~/.config/wlogout/style.css
-# Layout is shared — same file for both themes
-cp wlogout/layout ~/.config/wlogout/layout
+cp $THEME/wlogout/layout ~/.config/wlogout/layout
 
 # Alacritty (terminal)
 cp $THEME/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
