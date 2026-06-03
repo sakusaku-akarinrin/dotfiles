@@ -33,7 +33,7 @@ $character\
 """
 
 # No blank line at the start
-add_newline = false
+add_newline = true
 
 # ─── Username ──────────────────────────────
 
