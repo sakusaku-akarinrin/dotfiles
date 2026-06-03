@@ -20,7 +20,7 @@ format = """
 [](#201840)\
 $username\
 [](fg:#201840 bg:#282048)\
-[✉️](fg:#d4b06a bg:#282048)\
+[ ✉️ ](fg:#d4b06a bg:#282048)\
 [](fg:#282048 bg:#181530)\
 $directory\
 [](fg:#181530)\
@@ -28,7 +28,7 @@ $git_branch\
 $git_status\
 $fill\
 $all\
-\n\
+$line_break\
 $character\
 """
 
