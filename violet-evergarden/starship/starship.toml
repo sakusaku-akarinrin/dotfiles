@@ -31,7 +31,7 @@ add_newline = false
 # ─── Username ──────────────────────────────
 
 [username]
-style = "fg:#8888cc bold"
+style_user = "fg:#8888cc bold"
 format = "[$user]($style)✉️ "
 show_always = true
 
