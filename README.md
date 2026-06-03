@@ -116,13 +116,30 @@ sudo cp /usr/local/etc/pam.d/swaylock /etc/pam.d/swaylock
 
 ### Fonts
 
-```bash
-# Nerd Font (for waybar icons — 🌸 💌  etc.)
-sudo dnf install jetbrains-mono-nf-fonts
+These dotfiles use **JetBrainsMono Nerd Font** — the base JetBrains Mono with full icon glyphs
+for Starship, waybar, fuzzel, and everything that needs Nerd Font symbols.
 
-# Adwaita Mono (for alacritty, gtklock — ships with GNOME)
-fc-list | grep Adwaita
+```bash
+# 1. Install the base JetBrains Mono font from Fedora
+sudo dnf install jetbrains-mono-fonts-all
+
+# 2. Download the Nerd Font patched version (adds icon glyphs)
+curl -L -o /tmp/JetBrainsMono.tar.xz \
+  https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
+
+# 3. Install to your local font directory
+mkdir -p ~/.local/share/fonts
+tar -xf /tmp/JetBrainsMono.tar.xz -C ~/.local/share/fonts/
+
+# 4. Refresh font cache
+fc-cache -fv
+
+# 5. Verify it's available
+fc-list | grep -i "JetBrainsMono.*Nerd"
+# Expected: JetBrainsMono Nerd Font:style=Regular
 ```
+
+> **Font family name in config:** `"JetBrainsMono Nerd Font"`
 
 ### Optional
 
