@@ -17,6 +17,7 @@ dotfiles/
 │   │   └── themes/sakura-season.toml
 │   ├── ashell/config.toml
 │   ├── starship/starship.toml
+│   ├── wlogout/style.css
 │   ├── gtklock/config.ini, style.css
 │   └── swaylock/config
 │
@@ -29,6 +30,7 @@ dotfiles/
     │   └── themes/violet-evergarden.toml
     ├── ashell/config.toml
     ├── starship/starship.toml
+    ├── wlogout/style.css
     ├── gtklock/config.ini, style.css
     └── swaylock/config
 ```
@@ -171,6 +173,9 @@ sudo dnf install swww
 # Session lifecycle (DMS — enables proper login/logout flow)
 sudo dnf install dms
 
+# Power menu (Mod+Shift+E)
+sudo dnf install wlogout
+
 # Notifications
 sudo dnf install mako
 
@@ -215,6 +220,12 @@ cp $THEME/ashell/config.toml ~/.config/ashell/config.toml
 # Starship (shell prompt)
 mkdir -p ~/.config/starship
 cp $THEME/starship/starship.toml ~/.config/starship/starship.toml
+
+# wlogout (power menu)
+mkdir -p ~/.config/wlogout
+cp $THEME/wlogout/style.css ~/.config/wlogout/style.css
+# Layout is shared — same file for both themes
+cp wlogout/layout ~/.config/wlogout/layout
 
 # Alacritty (terminal)
 cp $THEME/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
