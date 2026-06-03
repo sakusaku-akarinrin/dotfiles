@@ -87,3 +87,8 @@ workspace_colors = [ "#8888cc", "#d4b06a", "#5a9e7a" ]
 base = "#1a1830"
 weak = "#2a2850"
 strong = "#3e3870"
+
+# ── OSD (On-Screen Display) ─────────────
+[osd]
+enabled = true
+timeout = 1500
