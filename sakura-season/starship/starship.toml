@@ -1,29 +1,28 @@
 # ╭────────────────────────────────────────────╮
 # │  🌸  Sakura Season · Starship Prompt  🌸  │
-# │  Powerline Style                           │
+# │  Powerline Style · Light Bg, Dark Text     │
 # ╰────────────────────────────────────────────╯
 # Palette
-# ─────────────────────────────────────────
-# Cherry blossom ... #f0a0b0  (username fg)
-# Rose blush ....... #d4a8b8  (emoji fg)
-# Lavender grey .... #7b7b9e  (directory fg)
-# Madder red ....... #d44a5a  (urgent)
-# Deep rosewood .... #2a1520  (username bg)
-# Mauve blush ...... #2a1a28  (emoji bg)
-# Dark lavender .... #1e1e30  (directory bg)
-# Shell bg ......... #121212  (terminal background)
+# ─────────────────────────────────────────────
+# Cherry blossom .. #f0c8d0  (username bg)
+# Rose ............ #e0b8c8  (emoji bg)
+# Lavender ........ #c4c0d8  (directory bg)
+# Dark rosewood ... #2a1018  (username fg)
+# Dark rose ....... #2a1018  (emoji fg)
+# Near-black ...... #100818  (directory fg)
+# Madder red ...... #d44a5a  (urgent)
 
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
 \
-[](#2a1520)\
+[](#f0c8d0)\
 $username\
-[](fg:#2a1520 bg:#2a1a28)\
-[ 🌸 ](fg:#d4a8b8 bg:#2a1a28)\
-[](fg:#2a1a28 bg:#1e1e30)\
+[](fg:#f0c8d0 bg:#e0b8c8)\
+[ 🌸 ](fg:#2a1018 bg:#e0b8c8)\
+[](fg:#e0b8c8 bg:#c4c0d8)\
 $directory\
-[](fg:#1e1e30)\
+[](fg:#c4c0d8)\
 $git_branch\
 $git_status\
 $fill\
@@ -32,20 +31,19 @@ $line_break\
 $character\
 """
 
-# No blank line at the start
-add_newline = false
+add_newline = true
 
 # ─── Username ──────────────────────────────
 
 [username]
-style_user = "fg:#f0a0b0 bg:#2a1520 bold"
+style_user = "fg:#2a1018 bg:#f0c8d0 bold"
 format = "[ $user ]($style)"
 show_always = true
 
 # ─── Directory ──────────────────────────────
 
 [directory]
-style = "fg:#7b7b9e bg:#1e1e30"
+style = "fg:#100818 bg:#c4c0d8"
 format = "[ $path ]($style)"
 truncation_length = 2
 truncation_symbol = "…/"
@@ -63,12 +61,12 @@ use_os_path_sep = true
 # ─── Git — Branch & Status ──────────────────
 
 [git_branch]
-style = "fg:#d4a8b8"
+style = "fg:#2a1018"
 format = " on [$symbol$branch]($style)"
 symbol = " "
 
 [git_status]
-style = "fg:#7b7b9e"
+style = "fg:#2a1018"
 format = '[$all_status$ahead_behind]($style)'
 conflicted = "🏳️ "
 ahead = "⇡${count}"
@@ -85,25 +83,25 @@ deleted = " ✘${count}"
 # ─── Runtime Versions — Subtle Right Side ─────
 
 [nodejs]
-style = "fg:#7b7b9e"
+style = "fg:#f0c8d0"
 format = " via [$symbol($version)]($style)"
 symbol = " "
 disabled = false
 
 [python]
-style = "fg:#7b7b9e"
+style = "fg:#f0c8d0"
 format = " via [$symbol($version)]($style)"
 symbol = "🐍 "
 disabled = false
 
 [rust]
-style = "fg:#7b7b9e"
+style = "fg:#f0c8d0"
 format = " via [$symbol($version)]($style)"
 symbol = " "
 disabled = false
 
 [bun]
-style = "fg:#7b7b9e"
+style = "fg:#f0c8d0"
 format = " [$symbol($version)]($style)"
 symbol = " "
 disabled = false
@@ -116,9 +114,9 @@ symbol = ""
 # ─── Prompt Character ────────────────────────
 
 [character]
-success_symbol = "[❯](bold #f0a0b0)"
+success_symbol = "[❯](bold #f0c8d0)"
 error_symbol = "[❯](bold #d44a5a)"
-vimcmd_symbol = "[❮](bold #7b7b9e)"
-vimcmd_replace_one_symbol = "[❮](bold #d4a8b8)"
-vimcmd_replace_symbol = "[❮](bold #f0a0b0)"
+vimcmd_symbol = "[❮](bold #c4c0d8)"
+vimcmd_replace_one_symbol = "[❮](bold #e0b8c8)"
+vimcmd_replace_symbol = "[❮](bold #f0c8d0)"
 format = "$symbol "
