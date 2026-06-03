@@ -14,6 +14,7 @@
 
 format = """
 \
+$username\
 $directory\
 $git_branch\
 $git_status\
@@ -25,6 +26,13 @@ $character\
 
 # No blank line at the start
 add_newline = false
+
+# ─── Username ──────────────────────────────
+
+[username]
+style = "fg:#f0a0b0 bold"
+format = "[$user]($style)🌸 "
+show_always = true
 
 # ─── Directory ──────────────────────────────
 
