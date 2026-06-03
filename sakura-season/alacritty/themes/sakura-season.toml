@@ -5,14 +5,14 @@
 [colors]
 [colors.primary]
 foreground = "#f0e4e8"
-background = "#161218"
+background = "#121212"
 
 [colors.cursor]
-text = "#161218"
+text = "#121212"
 cursor = "#f0a0b0"
 
 [colors.vi_mode_cursor]
-text = "#161218"
+text = "#121212"
 cursor = "#d4a8b8"
 
 [colors.normal]
