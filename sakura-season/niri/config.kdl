@@ -152,6 +152,37 @@ prefer-no-csd
 // Screenshots go to a tidy, timestamped location.
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
+// ─── Alt+Tab Switcher — Sakura Pink ─────────
+
+recent-windows {
+    debounce-ms 750
+    open-delay-ms 150
+
+    highlight {
+        active-color  "#f0a0b0ff"   // cherry blossom pink
+        urgent-color  "#d44a5aff"   // madder red — 茜 akane
+        padding 24
+        corner-radius 14
+    }
+
+    previews {
+        max-height 480
+        max-scale 0.5
+    }
+
+    binds {
+        Alt+Tab         { next-window; }
+        Alt+Shift+Tab   { previous-window; }
+        Alt+grave       { next-window     filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
+
+        Mod+Tab         { next-window; }
+        Mod+Shift+Tab   { previous-window; }
+        Mod+grave       { next-window     filter="app-id"; }
+        Mod+Shift+grave { previous-window filter="app-id"; }
+    }
+}
+
 // ─── Animations — Smooth & Gentle ───────────
 
 animations {
