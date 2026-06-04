@@ -143,14 +143,14 @@ spawn-sh-at-startup "sleep 0.5 && swww img ~/.config/wallpaper/wallpaper.jpg"
 // Optional: notification daemon
 // spawn-at-startup "mako"
 
-// Optional: clipboard manager
-// spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+// Clipboard manager
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
 
 // ─── Hotkey Overlay ──────────────────────────
 
 hotkey-overlay {
     // Show the overlay on first launch — good for learning.
-    // skip-at-startup
+    skip-at-startup
 }
 
 // ─── Preferences ─────────────────────────────
@@ -261,6 +261,7 @@ binds {
     Mod+Return hotkey-overlay-title="Terminal (Alacritty)"  { spawn "alacritty"; }
     Mod+D      hotkey-overlay-title="App Launcher (fuzzel)" { spawn "fuzzel"; }
     Mod+Shift+Period hotkey-overlay-title="😊 Emoji Picker" { spawn-sh "~/.config/scripts/fuzzel-emoji"; }
+    Mod+Shift+C      hotkey-overlay-title="📋 Clipboard History" { spawn-sh "cliphist list | fuzzel -d | cliphist decode | wl-copy"; }
 
     // Lock screen — pick one:
     Super+Alt+L hotkey-overlay-title="Lock (gtklock)"   { spawn "gtklock"; }
