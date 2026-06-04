@@ -1,0 +1,98 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": { "type": "none" },
+    "display": {
+        "separator": "  ",
+        "constants": [
+            "─────────────────────────────"
+        ],
+        "key": {
+            "type": "both",
+            "paddingLeft": 2
+        }
+    },
+    "modules": [
+        // ═══════════════════════════════
+        //  🌸  System
+        // ═══════════════════════════════
+        { "type": "custom", "format": "┌{$1} {#f0a0b0}🌸  System{#} {$1}┐" },
+        "break",
+        {
+            "type": "os",
+            "key": "  OS       ",
+            "keyColor": "#f0a0b0"
+        },
+        {
+            "type": "kernel",
+            "key": "  Kernel   ",
+            "keyColor": "#d4a8b8"
+        },
+        {
+            "type": "wm",
+            "key": "  WM       ",
+            "keyColor": "#9098c0"
+        },
+        {
+            "type": "terminal",
+            "key": "  Terminal ",
+            "keyColor": "#d4a8b8"
+        },
+        {
+            "type": "shell",
+            "key": "  Shell    ",
+            "keyColor": "#9098c0"
+        },
+        {
+            "type": "uptime",
+            "key": "  Uptime   ",
+            "keyColor": "#f0a0b0"
+        },
+        { "type": "custom", "format": "└{$1}────────────────────{$1}┘" },
+        "break",
+
+        // ═══════════════════════════════
+        //  ⚙  Hardware
+        // ═══════════════════════════════
+        { "type": "custom", "format": "┌{$1} {#a0d4a8}⚙  Hardware{#} {$1}┐" },
+        "break",
+        {
+            "type": "cpu",
+            "key": "  CPU      ",
+            "keyColor": "#d4a8b8",
+            "temp": true
+        },
+        {
+            "type": "gpu",
+            "key": "  GPU      ",
+            "keyColor": "#9098c0"
+        },
+        {
+            "type": "memory",
+            "key": "  Memory   ",
+            "keyColor": "#e8a870",
+            "format": "{used} / {total}  [{bar}]"
+        },
+        {
+            "type": "disk",
+            "key": "  Disk     ",
+            "keyColor": "#a0d4a8",
+            "folders": "/",
+            "format": "{used} / {size}  [{bar}]"
+        },
+        {
+            "type": "battery",
+            "key": "  Battery  ",
+            "keyColor": "#d4a8b8",
+            "format": "{capacity}%  [{bar}]"
+        },
+        { "type": "custom", "format": "└{$1}────────────────────{$1}┘" },
+        "break",
+
+        // Color palette
+        {
+            "type": "colors",
+            "paddingLeft": 2,
+            "symbol": "circle"
+        }
+    ]
+}

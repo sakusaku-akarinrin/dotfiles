@@ -21,6 +21,7 @@ dotfiles/
 │   ├── gtklock/config.ini, style.css
 │   ├── swaylock/config
 │   ├── mako/config
+│   ├── fastfetch/config.jsonc
 │   └── scripts/fuzzel-emoji
 │
 └── violet-evergarden/      ✉️ Violet iris blue — quiet & dignified
@@ -36,6 +37,7 @@ dotfiles/
     ├── gtklock/config.ini, style.css
     ├── swaylock/config
     ├── mako/config
+    ├── fastfetch/config.jsonc
     └── scripts/fuzzel-emoji
 ```
 
@@ -85,6 +87,9 @@ sudo dnf install ashell
 # Shell prompt — Starship
 sudo dnf copr enable atim/starship
 sudo dnf install starship
+
+# System fetch — fastfetch (themed dual-box display)
+sudo dnf install fastfetch
 
 # Audio (volume keys, mute, media controls)
 sudo dnf install wireplumber playerctl
@@ -251,6 +256,12 @@ cp $THEME/gtklock/style.css ~/.config/gtklock/style.css
 # Mako (notification daemon)
 mkdir -p ~/.config/mako
 cp $THEME/mako/config ~/.config/mako/config
+
+# Fastfetch (system info display)
+mkdir -p ~/.config/fastfetch
+cp $THEME/fastfetch/config.jsonc ~/.config/fastfetch/config.jsonc
+# Optional: auto-run on terminal open
+# echo 'fastfetch' >> ~/.bashrc
 
 # Scripts (emoji picker)
 mkdir -p ~/.config/scripts
