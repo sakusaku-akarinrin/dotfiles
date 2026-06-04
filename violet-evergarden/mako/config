@@ -1,0 +1,84 @@
+# ╭──────────────────────────────────────────────────╮
+# │  ✉️  Violet Evergarden · Mako Notifications  ✉️  │
+# │  \"I want to know what 'I love you' means.\"       │
+# ╰──────────────────────────────────────────────────╯
+# Palette:
+#   Violet iris ..... #8888cc    Normal border
+#   Navy uniform .... #5a6088    Low-urgency border
+#   Crimson seal .... #c04858    Critical border
+#   Midnight ink .... #1a1830    Toast background
+#   Ivory paper ..... #f0e8d8    Primary text
+#   Emerald brooch .. #5a9e7a    Progress bar
+#   Golden letter ... #d4b06a    Secondary accent
+
+# ── General ─────────────────────────────────
+
+sort=-time
+layer=overlay
+anchor=top-right
+max-visible=5
+default-timeout=5000
+width=360
+margin=12,12,12,12
+padding=16
+border-size=2
+border-radius=10
+font="Ubuntu Nerd Font" 11
+markup=1
+actions=1
+icons=1
+max-icon-size=48
+ignore-timeout=0
+
+# ── Global style (base) ─────────────────────
+
+background=#cc1a1830
+text-color=#f0e8d8
+border-color=#8888cc
+progress-color=over #5a9e7a
+
+# ── Urgency levels ──────────────────────────
+
+[urgency=low]
+background=#cc1a1830
+border-color=#5a6088
+text-color=#d0c8b8
+default-timeout=4000
+
+[urgency=normal]
+background=#cc1a1830
+border-color=#8888cc
+text-color=#f0e8d8
+
+[urgency=critical]
+background=#cc2a2850
+border-color=#c04858
+text-color=#f0e8d8
+default-timeout=0
+border-size=3
+
+# ── Per-application accents ─────────────────
+
+# Discord — soft blurple accent
+[app-name="Discord"]
+border-color=#7888b8
+
+# Spotify — emerald green
+[app-name="Spotify"]
+border-color=#5a9e7a
+
+# Terminal (Alacritty) — navy uniform
+[app-name="Alacritty"]
+border-color=#5a6088
+
+# Firefox — golden letter
+[app-name="Firefox"]
+border-color=#d4b06a
+
+# System / dunstify test — violet iris
+[app-name="notify-send"]
+border-color=#8888cc
+
+# ── Format ──────────────────────────────────
+
+format=<b>%s</b>\n<span size="small" alpha="70%">%b</span>
