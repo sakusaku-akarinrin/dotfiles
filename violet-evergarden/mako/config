@@ -23,7 +23,7 @@ margin=12,12,12,12
 padding=16
 border-size=2
 border-radius=10
-font="Ubuntu Nerd Font" 11
+font=Ubuntu Nerd Font 11
 markup=1
 actions=1
 icons=1
@@ -32,7 +32,7 @@ ignore-timeout=0
 
 # ── Global style (base) ─────────────────────
 
-background=#cc1a1830
+background-color=#1a1830cc
 text-color=#f0e8d8
 border-color=#8888cc
 progress-color=over #5a9e7a
@@ -40,18 +40,18 @@ progress-color=over #5a9e7a
 # ── Urgency levels ──────────────────────────
 
 [urgency=low]
-background=#cc1a1830
+background-color=#1a1830cc
 border-color=#5a6088
 text-color=#d0c8b8
 default-timeout=4000
 
 [urgency=normal]
-background=#cc1a1830
+background-color=#1a1830cc
 border-color=#8888cc
 text-color=#f0e8d8
 
 [urgency=critical]
-background=#cc2a2850
+background-color=#2a2850cc
 border-color=#c04858
 text-color=#f0e8d8
 default-timeout=0
