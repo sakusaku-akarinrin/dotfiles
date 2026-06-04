@@ -260,6 +260,7 @@ binds {
     // ── Launchers ───────────────────────
     Mod+Return hotkey-overlay-title="Terminal (Alacritty)"  { spawn "alacritty"; }
     Mod+D      hotkey-overlay-title="App Launcher (fuzzel)" { spawn "fuzzel"; }
+    Mod+Shift+Period hotkey-overlay-title="😊 Emoji Picker" { spawn-sh "~/.config/scripts/fuzzel-emoji"; }
 
     // Lock screen — pick one:
     Super+Alt+L hotkey-overlay-title="Lock (gtklock)"   { spawn "gtklock"; }

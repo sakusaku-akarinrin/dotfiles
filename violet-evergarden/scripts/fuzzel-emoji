@@ -1,0 +1,28 @@
+#!/bin/bash
+# Fuzzel Emoji Picker — search, pick, copy to clipboard
+# First run downloads emoji list, cached at ~/.cache/fuzzel-emoji.txt
+
+set -e
+
+EMOJI_CACHE="$HOME/.cache/fuzzel-emoji.txt"
+EMOJI_URL="https://raw.githubusercontent.com/Mange/rofi-emoji/master/all_emojis.txt"
+
+if [ ! -f "$EMOJI_CACHE" ]; then
+    mkdir -p "$(dirname "$EMOJI_CACHE")"
+    if command -v curl &>/dev/null; then
+        curl -sL "$EMOJI_URL" -o "$EMOJI_CACHE"
+    elif command -v wget &>/dev/null; then
+        wget -q "$EMOJI_URL" -O "$EMOJI_CACHE"
+    else
+        notify-send -u critical "Emoji Picker" "Need curl or wget to download emoji list"
+        exit 1
+    fi
+fi
+
+if ! command -v wl-copy &>/dev/null; then
+    notify-send -u critical "Emoji Picker" "Need wl-clipboard (wl-copy)"
+    exit 1
+fi
+
+chosen=$(fuzzel -d -p "Emoji  " < "$EMOJI_CACHE" | awk '{print $1}')
+[ -n "$chosen" ] && printf "%s" "$chosen" | wl-copy
