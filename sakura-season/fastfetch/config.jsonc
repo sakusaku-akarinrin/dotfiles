@@ -15,7 +15,7 @@
         // ═══════════════════════════════
         //  🌸  System
         // ═══════════════════════════════
-        { "type": "custom", "format": "┌{$0} {##f0a0b0}🌸  System{#} {$0}┐" },
+        { "type": "custom", "format": "┌{$1} {##f0a0b0}🌸  System{#} {$1}┐" },
         "break",
         {
             "type": "os",
@@ -47,13 +47,13 @@
             "key": "  Uptime   ",
             "keyColor": "#f0a0b0"
         },
-        { "type": "custom", "format": "└{$0}────────────────────{$0}┘" },
+        { "type": "custom", "format": "└{$1}────────────────────{$1}┘" },
         "break",
 
         // ═══════════════════════════════
         //  ⚙  Hardware
         // ═══════════════════════════════
-        { "type": "custom", "format": "┌{$0} {##a0d4a8}⚙  Hardware{#} {$0}┐" },
+        { "type": "custom", "format": "┌{$1} {##a0d4a8}⚙  Hardware{#} {$1}┐" },
         "break",
         {
             "type": "cpu",
@@ -69,23 +69,20 @@
         {
             "type": "memory",
             "key": "  Memory   ",
-            "keyColor": "#e8a870",
-            "format": "{used} / {total}  [{bar}]"
+            "keyColor": "#e8a870"
         },
         {
             "type": "disk",
             "key": "  Disk     ",
             "keyColor": "#a0d4a8",
-            "folders": "/",
-            "format": "{used} / {size}  [{bar}]"
+            "folders": "/"
         },
         {
             "type": "battery",
             "key": "  Battery  ",
-            "keyColor": "#d4a8b8",
-            "format": "{capacity}%  [{bar}]"
+            "keyColor": "#d4a8b8"
         },
-        { "type": "custom", "format": "└{$0}────────────────────{$0}┘" },
+        { "type": "custom", "format": "└{$1}────────────────────{$1}┘" },
         "break",
 
         // Color palette
