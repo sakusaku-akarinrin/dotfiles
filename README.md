@@ -88,7 +88,7 @@ sudo dnf install ashell
 sudo dnf copr enable atim/starship
 sudo dnf install starship
 
-# System fetch — fastfetch (themed dual-box display)
+# System fetch — fastfetch (themed, color-coded sections with progress bars)
 sudo dnf install fastfetch
 
 # Audio (volume keys, mute, media controls)
