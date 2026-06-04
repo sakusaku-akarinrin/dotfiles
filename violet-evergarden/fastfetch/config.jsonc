@@ -15,7 +15,7 @@
         // ═══════════════════════════════
         //  ✉️  System
         // ═══════════════════════════════
-        { "type": "custom", "format": "┌{$1} {#8888cc}✉️  System{#} {$1}┐" },
+        { "type": "custom", "format": "┌{$0} {#8888cc}✉️  System{#} {$0}┐" },
         "break",
         {
             "type": "os",
@@ -47,13 +47,13 @@
             "key": "  Uptime   ",
             "keyColor": "#8888cc"
         },
-        { "type": "custom", "format": "└{$1}────────────────────{$1}┘" },
+        { "type": "custom", "format": "└{$0}────────────────────{$0}┘" },
         "break",
 
         // ═══════════════════════════════
         //  ⚙  Hardware
         // ═══════════════════════════════
-        { "type": "custom", "format": "┌{$1} {#5a9e7a}⚙  Hardware{#} {$1}┐" },
+        { "type": "custom", "format": "┌{$0} {#5a9e7a}⚙  Hardware{#} {$0}┐" },
         "break",
         {
             "type": "cpu",
@@ -85,7 +85,7 @@
             "keyColor": "#d4b06a",
             "format": "{capacity}%  [{bar}]"
         },
-        { "type": "custom", "format": "└{$1}────────────────────{$1}┘" },
+        { "type": "custom", "format": "└{$0}────────────────────{$0}┘" },
         "break",
 
         // Color palette
