@@ -47,7 +47,7 @@ alert_threshold = 85
 
 # ── Tempo (Clock + Weather) ─────────────
 [tempo]
-clock_format = "%a %d %b %R"
+clock_format = "%a %d/%m/%Y %R"
 weather_location = { City = "Bangkok" }
 weather_indicator = "IconAndTemperature"
 
