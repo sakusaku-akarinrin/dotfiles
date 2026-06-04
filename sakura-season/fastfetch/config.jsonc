@@ -3,20 +3,14 @@
     "logo": { "type": "none" },
     "display": {
         "separator": "  ",
-        "constants": [
-            "─────────────────────────────"
-        ],
         "key": {
             "type": "both",
             "paddingLeft": 2
         }
     },
     "modules": [
-        // ═══════════════════════════════
-        //  🌸  System
-        // ═══════════════════════════════
-        { "type": "custom", "format": "┌{$1} {##f0a0b0}🌸  System{#} {$1}┐" },
-        "break",
+        { "type": "custom", "format": "{##f0a0b0}🌸  System{#}" },
+        "separator",
         {
             "type": "os",
             "key": "  OS       ",
@@ -47,14 +41,9 @@
             "key": "  Uptime   ",
             "keyColor": "#f0a0b0"
         },
-        { "type": "custom", "format": "└{$1}────────────────────{$1}┘" },
         "break",
-
-        // ═══════════════════════════════
-        //  ⚙  Hardware
-        // ═══════════════════════════════
-        { "type": "custom", "format": "┌{$1} {##a0d4a8}⚙  Hardware{#} {$1}┐" },
-        "break",
+        { "type": "custom", "format": "{##a0d4a8}⚙  Hardware{#}" },
+        "separator",
         {
             "type": "cpu",
             "key": "  CPU      ",
@@ -69,23 +58,23 @@
         {
             "type": "memory",
             "key": "  Memory   ",
-            "keyColor": "#e8a870"
+            "keyColor": "#e8a870",
+            "percent": { "type": 3 }
         },
         {
             "type": "disk",
             "key": "  Disk     ",
             "keyColor": "#a0d4a8",
-            "folders": "/"
+            "folders": "/",
+            "percent": { "type": 3 }
         },
         {
             "type": "battery",
             "key": "  Battery  ",
-            "keyColor": "#d4a8b8"
+            "keyColor": "#d4a8b8",
+            "percent": { "type": 3 }
         },
-        { "type": "custom", "format": "└{$1}────────────────────{$1}┘" },
         "break",
-
-        // Color palette
         {
             "type": "colors",
             "paddingLeft": 2,

@@ -3,20 +3,14 @@
     "logo": { "type": "none" },
     "display": {
         "separator": "  ",
-        "constants": [
-            "─────────────────────────────"
-        ],
         "key": {
             "type": "both",
             "paddingLeft": 2
         }
     },
     "modules": [
-        // ═══════════════════════════════
-        //  ✉️  System
-        // ═══════════════════════════════
-        { "type": "custom", "format": "┌{$1} {##8888cc}✉️  System{#} {$1}┐" },
-        "break",
+        { "type": "custom", "format": "{##8888cc}✉️  System{#}" },
+        "separator",
         {
             "type": "os",
             "key": "  OS       ",
@@ -47,14 +41,9 @@
             "key": "  Uptime   ",
             "keyColor": "#8888cc"
         },
-        { "type": "custom", "format": "└{$1}────────────────────{$1}┘" },
         "break",
-
-        // ═══════════════════════════════
-        //  ⚙  Hardware
-        // ═══════════════════════════════
-        { "type": "custom", "format": "┌{$1} {##5a9e7a}⚙  Hardware{#} {$1}┐" },
-        "break",
+        { "type": "custom", "format": "{##5a9e7a}⚙  Hardware{#}" },
+        "separator",
         {
             "type": "cpu",
             "key": "  CPU      ",
@@ -69,23 +58,23 @@
         {
             "type": "memory",
             "key": "  Memory   ",
-            "keyColor": "#d4b06a"
+            "keyColor": "#d4b06a",
+            "percent": { "type": 3 }
         },
         {
             "type": "disk",
             "key": "  Disk     ",
             "keyColor": "#5a9e7a",
-            "folders": "/"
+            "folders": "/",
+            "percent": { "type": 3 }
         },
         {
             "type": "battery",
             "key": "  Battery  ",
-            "keyColor": "#d4b06a"
+            "keyColor": "#d4b06a",
+            "percent": { "type": 3 }
         },
-        { "type": "custom", "format": "└{$1}────────────────────{$1}┘" },
         "break",
-
-        // Color palette
         {
             "type": "colors",
             "paddingLeft": 2,
