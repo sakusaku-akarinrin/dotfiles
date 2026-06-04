@@ -19,7 +19,9 @@ dotfiles/
 │   ├── starship/starship.toml
 │   ├── wlogout/layout, style.css
 │   ├── gtklock/config.ini, style.css
-│   └── swaylock/config
+│   ├── swaylock/config
+│   ├── mako/config
+│   └── scripts/fuzzel-emoji
 │
 └── violet-evergarden/      ✉️ Violet iris blue — quiet & dignified
     ├── niri/config.kdl
@@ -32,7 +34,9 @@ dotfiles/
     ├── starship/starship.toml
     ├── wlogout/layout, style.css
     ├── gtklock/config.ini, style.css
-    └── swaylock/config
+    ├── swaylock/config
+    ├── mako/config
+    └── scripts/fuzzel-emoji
 ```
 
 ## Themes
@@ -176,11 +180,14 @@ sudo dnf install dms
 # Power menu (Mod+Shift+E)
 sudo dnf install wlogout
 
-# Notifications
+# Notifications (per-theme styled toasts)
 sudo dnf install mako
 
-# Clipboard history
-sudo dnf install cliphist
+# Clipboard history (Mod+Shift+C)
+sudo dnf install cliphist wl-clipboard
+
+# Emoji picker (Mod+Shift+.) — needs curl or wget for first-run download
+sudo dnf install curl
 
 # GUI audio mixer (on-click from waybar)
 sudo dnf install pavucontrol
@@ -241,6 +248,15 @@ cp $THEME/gtklock/style.css ~/.config/gtklock/style.css
 # Or swaylock instead:
 # cp $THEME/swaylock/config ~/.config/swaylock/config
 
+# Mako (notification daemon)
+mkdir -p ~/.config/mako
+cp $THEME/mako/config ~/.config/mako/config
+
+# Scripts (emoji picker)
+mkdir -p ~/.config/scripts
+cp $THEME/scripts/fuzzel-emoji ~/.config/scripts/fuzzel-emoji
+chmod +x ~/.config/scripts/fuzzel-emoji
+
 # Wallpaper — place your image here:
 mkdir -p ~/.config/wallpaper
 # cp ~/Pictures/Wallpapers/violet.jpg ~/.config/wallpaper/wallpaper.jpg
@@ -251,6 +267,24 @@ systemctl --user add-wants niri.service dms
 # Reload Niri
 niri msg action quit-and-replace
 ```
+
+## Keybinds
+
+> Press `Mod+Shift+/` to see the hotkey overlay (disabled at startup).
+
+| Key | Action |
+|---|---|
+| `Mod+Return` | Terminal (Alacritty) |
+| `Mod+D` | App Launcher (fuzzel) |
+| `Mod+Q` | Close window |
+| `Mod+Shift+E` | ⏻ Power Menu (wlogout) |
+| `Mod+Shift+.` | 😊 Emoji Picker |
+| `Mod+Shift+C` | 📋 Clipboard History |
+| `Mod+Shift+Slash` | Hotkey Overlay |
+| `Super+Alt+L` | Lock Screen |
+| `Print` | Screenshot |
+| `Ctrl+Print` | Screenshot (screen) |
+| `Alt+Print` | Screenshot (window) |
 
 ## Lock screen
 
