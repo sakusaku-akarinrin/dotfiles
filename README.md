@@ -22,6 +22,7 @@ dotfiles/
 │   ├── swaylock/config
 │   ├── mako/config
 │   ├── fastfetch/config.jsonc
+│   ├── nvim/init.lua
 │   └── scripts/fuzzel-emoji
 │
 └── violet-evergarden/      ✉️ Violet iris blue — quiet & dignified
@@ -38,6 +39,7 @@ dotfiles/
     ├── swaylock/config
     ├── mako/config
     ├── fastfetch/config.jsonc
+    ├── nvim/init.lua
     └── scripts/fuzzel-emoji
 ```
 
@@ -87,6 +89,9 @@ sudo dnf install ashell
 # Shell prompt — Starship
 sudo dnf copr enable atim/starship
 sudo dnf install starship
+
+# Editor
+sudo dnf install neovim
 
 # System fetch — fastfetch (themed, color-coded sections with progress bars)
 sudo dnf install fastfetch
@@ -262,6 +267,10 @@ mkdir -p ~/.config/fastfetch
 cp $THEME/fastfetch/config.jsonc ~/.config/fastfetch/config.jsonc
 # Optional: auto-run on terminal open
 # echo 'fastfetch' >> ~/.bashrc
+
+# Neovim (theme-matched editor)
+mkdir -p ~/.config/nvim
+cp $THEME/nvim/init.lua ~/.config/nvim/init.lua
 
 # Scripts (emoji picker)
 mkdir -p ~/.config/scripts
