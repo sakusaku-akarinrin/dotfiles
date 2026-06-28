@@ -163,6 +163,29 @@ hi("GitSignsAdd", { fg = palette.green })
 hi("GitSignsChange", { fg = palette.blue })
 hi("GitSignsDelete", { fg = palette.red })
 
+-- Let Alacritty + Niri provide the acrylic background.
+for _, group in ipairs({
+  "Normal",
+  "NormalNC",
+  "EndOfBuffer",
+  "LineNr",
+  "SignColumn",
+  "FoldColumn",
+  "WinSeparator",
+  "VertSplit",
+  "StatusLine",
+  "StatusLineNC",
+  "TabLine",
+  "TabLineFill",
+}) do
+  local ok, current = pcall(vim.api.nvim_get_hl, 0, { name = group, link = false })
+  if ok then
+    current.bg = "NONE"
+    current.ctermbg = "NONE"
+    vim.api.nvim_set_hl(0, group, current)
+  end
+end
+
 vim.g.terminal_color_0 = palette.bg_soft
 vim.g.terminal_color_1 = palette.red
 vim.g.terminal_color_2 = palette.green
