@@ -13,6 +13,8 @@
 # Midnight ink .... #181530  (directory bg)
 # Shell bg ........ #121212  (terminal background)
 
+scan_timeout = 100
+
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
