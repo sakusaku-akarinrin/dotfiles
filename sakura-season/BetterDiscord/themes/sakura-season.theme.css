@@ -1,0 +1,301 @@
+/**
+ * @name Sakura Season
+ * @author Akane Sakurai
+ * @version 1.0.0
+ * @description Cherry-blossom pink, plum shadows and lavender ink. An offline, adaptive companion to the Sakura desktop.
+ * @website https://github.com/sakusaku-akarinrin/dotfiles
+ */
+
+/* Enable only one AII theme at a time. No imports, fonts, images or plugins.
+   Dark / Darker / Midnight use the desktop palette; Light uses matching ink.
+   Edit these aii-prefixed values, not the Discord aliases further below.
+   Keep the three HSL companions synchronized if changing the brand colors. */
+:root {
+  --aii-accent: #f0a0b0;
+  --aii-accent-hover: #f4b8c5;
+  --aii-accent-active: #dc90a1;
+  --aii-accent-hsl: 348.000 72.727% 78.431%;
+  --aii-accent-hover-hsl: 347.000 73.171% 83.922%;
+  --aii-accent-active-hsl: 346.579 52.055% 71.373%;
+  --aii-secondary: #d4a8b8;
+  --aii-on-accent: #1a1620;
+  --aii-radius: 12px;
+  --aii-heading: #f0e4e8;
+  --aii-text: #d0c0c8;
+  --aii-muted: #b0a2ad;
+  --aii-base: #1a1620;
+  --aii-sidebar: #211c28;
+  --aii-rail: #151219;
+  --aii-surface: #2c2534;
+  --aii-elevated: #342c3e;
+  --aii-border: #4a4050;
+  --aii-link: #a8b0d8;
+  --aii-text-accent: var(--aii-accent);
+  --aii-focus: var(--aii-accent);
+  --aii-hover: color-mix(in srgb, var(--aii-accent) 8%, transparent);
+  --aii-selected: color-mix(in srgb, var(--aii-accent) 16%, transparent);
+  --aii-mention: color-mix(in srgb, var(--aii-secondary) 10%, transparent);
+  --aii-mention-hover: color-mix(in srgb, var(--aii-secondary) 16%, transparent);
+  --aii-selection: color-mix(in srgb, var(--aii-accent) 32%, var(--aii-base));
+  --aii-header-tint: color-mix(in srgb, var(--aii-accent) 6%, transparent);
+  --aii-header-line: color-mix(in srgb, var(--aii-secondary) 38%, transparent);
+}
+
+/* Inherit unchanged brand colors, then adapt surfaces and reading contrast.
+   Nested theme-light boundaries also work for Discord's floating components. */
+.theme-light {
+  --aii-heading: #392633;
+  --aii-text: #483846;
+  --aii-muted: #72616e;
+  --aii-base: #fff8fa;
+  --aii-sidebar: #f7eef4;
+  --aii-rail: #ede1e9;
+  --aii-surface: #f2e5ed;
+  --aii-elevated: #fffafb;
+  --aii-border: #cbb5c4;
+  --aii-link: #8f3257;
+  --aii-text-accent: #8f3257;
+  --aii-focus: #a2456a;
+  --aii-secondary: #a2456a;
+}
+
+/* Semantic tokens: current Visual Refresh plus the older desktop palette.
+   Scope aliases to each theme boundary so portalled/nested menus inherit them.
+   Keep critical controls, presence indicators, role colors and media native. */
+@media (forced-colors: none) {
+  html:not(.high-contrast-mode):not(.enable-forced-colors),
+  html:not(.high-contrast-mode):not(.enable-forced-colors) :is(.theme-dark, .theme-darker, .theme-midnight, .theme-light):not(.high-contrast-mode) {
+    --background-primary: var(--aii-base);
+    --background-secondary: var(--aii-sidebar);
+    --background-secondary-alt: var(--aii-rail);
+    --background-tertiary: var(--aii-rail);
+    --background-accent: var(--aii-surface);
+    --background-floating: var(--aii-elevated);
+    --background-nested-floating: var(--aii-surface);
+    --background-base-low: var(--aii-base);
+    --background-base-lower: var(--aii-sidebar);
+    --background-base-lowest: var(--aii-rail);
+    --background-surface-high: var(--aii-surface);
+    --background-surface-higher: var(--aii-elevated);
+    --background-surface-highest: var(--aii-elevated);
+    --background-mod-muted: var(--aii-hover);
+    --background-mod-subtle: var(--aii-hover);
+    --background-mod-normal: var(--aii-selected);
+    --background-mod-strong: var(--aii-selected);
+    --background-modifier-hover: var(--aii-hover);
+    --background-modifier-active: var(--aii-selected);
+    --background-modifier-selected: var(--aii-selected);
+    --background-modifier-accent: var(--aii-border);
+    --bg-base-primary: var(--aii-base);
+    --bg-base-secondary: var(--aii-sidebar);
+    --bg-base-tertiary: var(--aii-rail);
+    --bg-surface-overlay: var(--aii-elevated);
+    --bg-surface-raised: var(--aii-surface);
+    --bg-mod-faint: var(--aii-hover);
+    --bg-mod-subtle: var(--aii-hover);
+    --bg-mod-strong: var(--aii-selected);
+    --bg-brand: var(--aii-accent);
+    --chat-background: var(--aii-base);
+    --chat-background-default: var(--aii-base);
+    --channeltextarea-background: var(--aii-surface);
+    --input-background: var(--aii-surface);
+    --input-border: var(--aii-border);
+    --modal-background: var(--aii-elevated);
+    --modal-footer-background: var(--aii-sidebar);
+    --autocomplete-bg: var(--aii-elevated);
+    --search-popout-option-user-nickname: var(--aii-heading);
+    --search-popout-option-user-username: var(--aii-muted);
+    --activity-card-background: var(--aii-surface);
+    --home-background: var(--aii-base);
+    --panel-bg: var(--aii-sidebar);
+
+    --text-normal: var(--aii-text);
+    --text-default: var(--aii-text);
+    --text-primary: var(--aii-text);
+    --text-secondary: var(--aii-muted);
+    --text-strong: var(--aii-heading);
+    --text-muted: var(--aii-muted);
+    --text-subtle: var(--aii-muted);
+    --header-primary: var(--aii-heading);
+    --header-secondary: var(--aii-muted);
+    --channels-default: var(--aii-muted);
+    --channel-icon: var(--aii-muted);
+    --text-link: var(--aii-link);
+    --text-link-low-saturation: var(--aii-link);
+    --text-brand: var(--aii-text-accent);
+    --text-invert: var(--aii-on-accent);
+    --interactive-normal: var(--aii-muted);
+    --interactive-hover: var(--aii-heading);
+    --interactive-active: var(--aii-heading);
+    --interactive-muted: var(--aii-muted);
+    --interactive-text-default: var(--aii-muted);
+    --interactive-text-hover: var(--aii-heading);
+    --interactive-text-active: var(--aii-heading);
+    --interactive-icon-default: var(--aii-muted);
+    --interactive-icon-hover: var(--aii-heading);
+    --interactive-icon-active: var(--aii-heading);
+    --interactive-background-default: transparent;
+    --interactive-background-hover: var(--aii-hover);
+    --interactive-background-selected: var(--aii-selected);
+    --interactive-background-active: var(--aii-selected);
+    --interactive-accent-background-default: var(--aii-selected);
+    --interactive-accent-background-hover: var(--aii-selected);
+    --interactive-accent-background-selected: var(--aii-selected);
+    --interactive-accent-background-active: var(--aii-selected);
+    --icon-default: var(--aii-muted);
+    --icon-muted: var(--aii-muted);
+    --icon-subtle: var(--aii-muted);
+    --icon-strong: var(--aii-heading);
+    --icon-brand: var(--aii-text-accent);
+    --icon-link: var(--aii-link);
+    --control-brand-foreground: var(--aii-text-accent);
+    --control-brand-foreground-new: var(--aii-text-accent);
+
+    --brand-experiment: var(--aii-accent);
+    --brand-500: var(--aii-accent);
+    --brand-500-hsl: var(--aii-accent-hsl);
+    --brand-560: var(--aii-accent-active);
+    --brand-600: var(--aii-accent-hover);
+    --brand-600-hsl: var(--aii-accent-hover-hsl);
+    --brand-700: var(--aii-accent-active);
+    --brand-700-hsl: var(--aii-accent-active-hsl);
+    --button-filled-brand-background: var(--aii-accent);
+    --button-filled-brand-background-hover: var(--aii-accent-hover);
+    --button-filled-brand-background-active: var(--aii-accent-active);
+    --button-filled-brand-text: var(--aii-on-accent);
+    --button-filled-brand-border: transparent;
+    --button-secondary-background: var(--aii-surface);
+    --button-secondary-background-hover: var(--aii-elevated);
+    --button-secondary-background-active: var(--aii-selected);
+    --button-secondary-text: var(--aii-text);
+    --control-primary-background-default: var(--aii-accent);
+    --control-primary-background-hover: var(--aii-accent-hover);
+    --control-primary-background-active: var(--aii-accent-active);
+    --control-primary-text-default: var(--aii-on-accent);
+    --control-primary-text-hover: var(--aii-on-accent);
+    --control-primary-text-active: var(--aii-on-accent);
+    --control-primary-icon-default: var(--aii-on-accent);
+    --control-primary-icon-hover: var(--aii-on-accent);
+    --control-primary-icon-active: var(--aii-on-accent);
+    --control-primary-border-default: transparent;
+    --control-primary-border-hover: transparent;
+    --control-primary-border-active: transparent;
+    --control-secondary-background-default: var(--aii-surface);
+    --control-secondary-background-hover: var(--aii-elevated);
+    --control-secondary-background-active: var(--aii-selected);
+    --control-secondary-text-default: var(--aii-text);
+    --control-secondary-text-hover: var(--aii-heading);
+    --control-secondary-text-active: var(--aii-heading);
+    --control-secondary-icon-default: var(--aii-text);
+    --control-secondary-icon-hover: var(--aii-heading);
+    --control-secondary-icon-active: var(--aii-heading);
+    --control-secondary-border-default: var(--aii-border);
+    --control-secondary-border-hover: var(--aii-focus);
+    --control-secondary-border-active: var(--aii-focus);
+
+    --border-faint: var(--aii-border);
+    --border-muted: var(--aii-border);
+    --border-subtle: var(--aii-border);
+    --border-normal: var(--aii-border);
+    --border-strong: var(--aii-muted);
+    --border-focus: var(--aii-focus);
+    --focus-primary: var(--aii-focus);
+    --background-mentioned: var(--aii-mention);
+    --background-mentioned-hover: var(--aii-mention-hover);
+    --background-message-hover: var(--aii-hover);
+    --background-message-highlight: var(--aii-selected);
+    --background-message-highlight-hover: var(--aii-selected);
+    --message-mentioned-background-default: var(--aii-mention);
+    --message-mentioned-background-hover: var(--aii-mention-hover);
+    --message-background-hover: var(--aii-hover);
+    --message-highlight-background-default: var(--aii-selected);
+    --message-highlight-background-hover: var(--aii-selected);
+    --mention-foreground: var(--aii-text-accent);
+    --mention-background: var(--aii-selected);
+    --scrollbar-thin-thumb: var(--aii-border);
+    --scrollbar-thin-track: transparent;
+    --scrollbar-auto-thumb: var(--aii-border);
+    --scrollbar-auto-track: var(--aii-rail);
+    --scrollbar-auto-scrollbar-color-thumb: var(--aii-border);
+    --scrollbar-auto-scrollbar-color-track: var(--aii-rail);
+  }
+
+  /* Small, reversible finishing details. No app geometry is rearranged.
+     Hash-free class stems are best-effort; semantic colors work without them. */
+  html:not(.high-contrast-mode):not(.enable-forced-colors) #app-mount [class*="chat_"] > :is([class*="title_"], [class*="subtitleContainer_"]) {
+    background-image: linear-gradient(110deg, var(--aii-header-tint), transparent 65%);
+    box-shadow: inset 0 -1px var(--aii-border), inset 0 1px var(--aii-header-line);
+  }
+
+  html:not(.high-contrast-mode):not(.enable-forced-colors) #app-mount :is(
+    [data-list-item-id^="channels___"][aria-current="page"],
+    [data-list-item-id^="channels___"][aria-selected="true"],
+    [class*="modeSelected_"] [class*="link_"]
+  ) {
+    background-color: var(--aii-selected);
+    border-radius: calc(var(--aii-radius) - 4px);
+    box-shadow: inset 3px 0 var(--aii-accent);
+  }
+
+  html:not(.high-contrast-mode):not(.enable-forced-colors) #app-mount [class*="channelTextArea_"] {
+    background-color: var(--aii-surface);
+    border: 1px solid var(--aii-border);
+    border-radius: var(--aii-radius);
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+  }
+
+  html:not(.high-contrast-mode):not(.enable-forced-colors) #app-mount [class*="channelTextArea_"]:focus-within {
+    border-color: var(--aii-focus);
+    box-shadow: 0 0 0 2px var(--aii-selected);
+  }
+
+  html:not(.high-contrast-mode):not(.enable-forced-colors) #app-mount [id^="chat-messages-"][class*="mentioned_"] {
+    box-shadow: inset 3px 0 var(--aii-secondary);
+  }
+
+  html:not(.high-contrast-mode):not(.enable-forced-colors) #app-mount [id^="chat-messages-"][class*="mentioned_"]::before {
+    background-color: var(--aii-secondary);
+  }
+
+  html:not(.high-contrast-mode):not(.enable-forced-colors) #app-mount [class*="reaction_"][class*="reactionMe_"] {
+    background-color: var(--aii-selected);
+    border-color: var(--aii-focus);
+  }
+
+  html:not(.high-contrast-mode):not(.enable-forced-colors) #app-mount [class*="reactionMe_"] [class*="reactionCount_"] {
+    color: var(--aii-text-accent);
+  }
+
+  html:not(.high-contrast-mode):not(.enable-forced-colors) #app-mount :is([role="menu"], [class*="autocomplete_"]) {
+    background-color: var(--aii-elevated);
+    border: 1px solid var(--aii-border);
+    border-radius: var(--aii-radius);
+    box-shadow: 0 8px 28px rgb(0 0 0 / 18%);
+  }
+
+  html:not(.high-contrast-mode):not(.enable-forced-colors) #app-mount [class*="markup_"] :is(code, pre) {
+    background-color: var(--aii-rail);
+    border-color: var(--aii-border);
+  }
+
+  html:not(.high-contrast-mode):not(.enable-forced-colors) #app-mount [class*="markup_"] pre {
+    border: 1px solid var(--aii-border);
+    border-radius: calc(var(--aii-radius) - 4px);
+  }
+
+  html:not(.high-contrast-mode):not(.enable-forced-colors) #app-mount :is(button, a, input, textarea, [tabindex], [contenteditable="true"]):focus-visible {
+    outline: 2px solid var(--aii-focus);
+    outline-offset: 2px;
+  }
+
+  html:not(.high-contrast-mode):not(.enable-forced-colors) #app-mount ::selection {
+    color: var(--aii-heading);
+    background-color: var(--aii-selection);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html:not(.high-contrast-mode):not(.enable-forced-colors) #app-mount [class*="channelTextArea_"] {
+      transition: none;
+    }
+  }
+}

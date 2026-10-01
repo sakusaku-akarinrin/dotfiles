@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en" class="theme-dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AII BetterDiscord · representative preview</title>
+  <style>
+    /* This is an offline fixture, not copied Discord markup or a live client.
+       Its native-like token consumers make palette regressions observable. */
+    :root {
+      --background-base-low: #313338; --background-base-lower: #2b2d31;
+      --background-base-lowest: #1e1f22; --background-surface-high: #383a40;
+      --background-surface-higher: #2b2d31; --text-default: #dbdee1;
+      --text-strong: #f2f3f5; --text-muted: #949ba4; --text-link: #00a8fc;
+      --control-primary-background-default: #5865f2;
+      --control-primary-background-hover: #4752c4;
+      --control-primary-text-default: #fff; --control-primary-text-hover: #fff;
+      --control-secondary-background-default: #383a40;
+      --control-secondary-text-default: #dbdee1;
+      --button-filled-brand-background: #5865f2;
+      --button-filled-brand-background-hover: #4752c4;
+      --button-filled-brand-text: #fff;
+      --control-critical-primary-background-default: #b42337;
+      --icon-status-online: #23a55a; --border-subtle: #45464c;
+      --message-mentioned-background-default: rgb(240 178 50 / 10%);
+      --interactive-background-selected: rgb(79 84 92 / 60%);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 28px; background: #0d101a; color: #cdd2e5; font: 15px/1.5 "Segoe UI", "Noto Sans", sans-serif; }
+    .preview-header { max-width: 1350px; margin: 0 auto 22px; display: flex; justify-content: space-between; align-items: end; gap: 20px; }
+    .eyebrow { font: 11px/1.6 monospace; letter-spacing: .14em; text-transform: uppercase; color: #aab3cb; }
+    .preview-header h1 { margin: 4px 0; font-size: 24px; color: #eff1fa; font-weight: 600; }
+    .preview-header p { margin: 0; font-size: 12px; color: #aab3cb; }
+    .selectors { display: flex; gap: 8px; }
+    .selectors label { font-size: 11px; display: grid; gap: 4px; }
+    select { background: #232839; color: #e2e5f0; border: 1px solid #505971; padding: 8px; border-radius: 6px; }
+    #app-mount { max-width: 1350px; margin: auto; display: grid; grid-template-columns: 68px 226px minmax(0,1fr) 214px; min-height: 720px; border: 1px solid var(--border-subtle); border-radius: 16px; overflow: hidden; color: var(--text-default); box-shadow: 0 20px 80px #0005; }
+    #rail { background: var(--background-base-lowest); padding: 18px 10px; display: flex; align-items: center; flex-direction: column; gap: 14px; }
+    .guild { width: 42px; height: 42px; display: grid; place-items: center; background: var(--background-surface-high); border-radius: 14px; font-weight: 700; font-size: 14px; color: var(--text-strong); }
+    .guild.active { background: var(--control-primary-background-default); color: var(--control-primary-text-default); }
+    #sidebar { background: var(--background-base-lower); min-width: 0; display: flex; flex-direction: column; }
+    .server-title { height: 58px; padding: 18px; font-size: 14px; font-weight: 700; color: var(--text-strong); border-bottom: 1px solid var(--border-subtle); }
+    .channels { padding: 16px 10px; }
+    .channel-group { font-size: 10px; letter-spacing: .08em; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin: 16px 8px 8px; }
+    .channels a { display: flex; align-items: center; gap: 10px; color: var(--text-muted); text-decoration: none; padding: 9px 12px; margin-bottom: 4px; border-radius: 8px; }
+    .channels a[aria-current="page"] { color: var(--text-strong); background: var(--interactive-background-selected); }
+    .channels a:hover { background: var(--background-modifier-hover); color: var(--text-strong); }
+    .hash { font-size: 20px; font-weight: 400; opacity: .7; }
+    .account { margin-top: auto; border-top: 1px solid var(--border-subtle); padding: 16px 14px; display: flex; gap: 10px; align-items: center; color: var(--text-default); }
+    .avatar { width: 36px; height: 36px; flex: none; border-radius: 50%; display: grid; place-items: center; color: var(--control-primary-text-default); background: var(--control-primary-background-default); font-size: 12px; font-weight: 700; }
+    .avatar.secondary { background: var(--background-surface-high); color: var(--text-strong); }
+    .small { font-size: 11px; color: var(--text-muted); }
+    #chat { background: var(--background-base-low); min-width: 0; display: flex; flex-direction: column; }
+    .title_fixture { padding: 15px 24px; height: 58px; font-weight: 600; color: var(--text-strong); display: flex; align-items: center; justify-content: space-between; }
+    .title_fixture span { font-size: 12px; font-weight: 400; color: var(--text-muted); }
+    .messages { padding: 22px 24px; flex: 1; min-width: 0; }
+    .welcome { margin: 10px 0 24px; }
+    .welcome h2 { margin: 0 0 4px; font-size: 24px; line-height: 1.25; color: var(--text-strong); }
+    .welcome p { font-size: 13px; color: var(--text-muted); margin: 0; }
+    .divider { margin: 18px 0; border-top: 1px solid var(--border-subtle); position: relative; text-align: center; }
+    .divider span { position: relative; top: -11px; padding: 0 12px; background: var(--background-base-low); font-size: 10px; color: var(--text-muted); }
+    .message { display: flex; gap: 12px; margin: 18px 0; min-width: 0; }
+    .message-body { min-width: 0; flex: 1; }
+    .message strong { color: var(--text-strong); font-size: 13px; }
+    .message time { font-size: 10px; margin-left: 8px; color: var(--text-muted); }
+    .message p { margin: 5px 0; font-size: 13px; overflow-wrap: anywhere; }
+    #link { color: var(--text-link); }
+    pre { margin: 12px 0; padding: 14px; font: 12px/1.7 "AdwaitaMono Nerd Font", monospace; color: var(--text-default); overflow: auto; background: var(--background-base-lowest); border: 1px solid var(--border-subtle); }
+    .mentioned_fixture { padding: 12px; background: var(--message-mentioned-background-default); border-radius: 0 8px 8px 0; }
+    .reaction_fixture { margin-top: 8px; padding: 4px 10px; border: 1px solid #000; border-radius: 7px; background: var(--background-surface-high); color: var(--text-default); }
+    .composer-area { padding: 0 20px 16px; }
+    #composer { padding: 13px 14px; background: var(--background-surface-high); border: 1px solid var(--border-subtle); }
+    #editor { min-height: 24px; font-size: 13px; outline-offset: 4px; color: var(--text-default); }
+    #editor:empty::before { content: "Message #theme-studio"; color: var(--text-muted); }
+    .composer-foot { font-size: 10px; color: var(--text-muted); margin-top: 8px; }
+    #members { background: var(--background-base-lower); border-left: 1px solid var(--border-subtle); padding: 20px 14px; }
+    .member { display: flex; gap: 10px; align-items: center; margin: 18px 0; }
+    .status { display: inline-block; width: 8px; height: 8px; margin-right: 5px; border-radius: 50%; background: var(--icon-status-online); }
+    #menu { margin-top: 28px; padding: 14px; background: var(--background-surface-higher); }
+    #menu-item { color: var(--text-default); font-size: 12px; padding-bottom: 10px; }
+    #menu button { margin: 6px 0; width: 100%; }
+    button { cursor: pointer; border: 1px solid transparent; padding: 8px 12px; font-family: inherit; font-size: 12px; font-weight: 600; line-height: 1.4; border-radius: 7px; }
+    #brand-button { color: var(--control-primary-text-default); background: var(--control-primary-background-default); }
+    #brand-button:hover { color: var(--control-primary-text-hover); background: var(--control-primary-background-hover); }
+    #legacy-brand-button { color: var(--button-filled-brand-text); background: var(--button-filled-brand-background); }
+    #legacy-brand-button:hover { background: var(--button-filled-brand-background-hover); }
+    #danger-button { color: #fff; background: var(--control-critical-primary-background-default); }
+    #focus-probe { color: var(--aii-focus); display: none; }
+    .preview-footer { margin: 18px auto 0; max-width: 1350px; display: flex; justify-content: space-between; gap: 20px; color: #aab3cb; font-size: 11px; }
+    #unrelated-container { background: #191d2a; padding: 8px 12px; }
+    @media (max-width: 1150px) { #app-mount { grid-template-columns: 58px 190px minmax(0,1fr) 185px; } .messages { padding: 18px; } #members { padding: 16px 10px; } }
+    @media (max-width: 850px) { body { padding: 16px; } #app-mount { grid-template-columns: 54px 170px minmax(0,1fr); } #members { grid-column: 2 / -1; display: flex; flex-wrap: wrap; gap: 20px; border-top: 1px solid var(--border-subtle); border-left: 0; } #menu { margin: 0; width: 180px; } .preview-header { align-items: start; flex-direction: column; } }
+    @media (max-width: 600px) { #app-mount { grid-template-columns: 46px minmax(0,1fr); } #sidebar { grid-column: 2; } #chat { grid-column: 1 / -1; } #rail { grid-row: 1; } #members { grid-column: 1 / -1; } .preview-footer { flex-direction: column; } .channels { display: flex; flex-wrap: wrap; gap: 4px; } .channel-group, .account { display: none; } }
+  </style>
+  <link id="theme-css" rel="stylesheet">
+</head>
+<body>
+  <header class="preview-header">
+    <div><div class="eyebrow">Akane Institute · Desktop companions</div><h1 id="theme-name">Sakura Season</h1><p>Representative preview fixture — not a live Discord client.</p></div>
+    <div class="selectors">
+      <label>Theme<select id="theme-select"><option value="sakura-season">Sakura Season</option><option value="violet-evergarden">Violet Evergarden</option></select></label>
+      <label>Appearance<select id="mode-select"><option value="theme-dark">Dark</option><option value="theme-darker">Darker</option><option value="theme-midnight">Midnight</option><option value="theme-light">Light</option></select></label>
+    </div>
+  </header>
+  <main id="app-mount">
+    <nav id="rail" aria-label="Servers"><div class="guild active">AII</div><div class="guild">S</div><div class="guild">VE</div><div class="guild">+</div></nav>
+    <aside id="sidebar"><div class="server-title">Akane Institute</div><nav class="channels" aria-label="Channels"><div class="channel-group">Office</div><a href="#studio" id="selected-channel" data-list-item-id="channels___studio" aria-current="page"><span class="hash">#</span><span id="sidebar-label">theme-studio</span></a><a href="#general" id="channel-other" data-list-item-id="channels___general"><span class="hash">#</span>general</a><a href="#references" data-list-item-id="channels___references"><span class="hash">#</span>references</a><div class="channel-group">Voice</div><a href="#voice">◉ Quiet office</a></nav><div class="account"><div class="avatar">AS</div><div>Akane<div class="small"><span id="status-online" class="status"></span>Online</div></div></div></aside>
+    <section id="chat" class="chat_fixture"><div class="title_fixture"># theme-studio <span>Desktop companions</span></div><div class="messages"><div class="welcome"><h2>A quieter place to work.</h2><p>Palette, hierarchy and small details — without changing the way Discord works.</p></div><div class="divider"><span>Today</span></div><article class="message"><div class="avatar secondary">SS</div><div class="message-body"><strong>Sunnyshineshow</strong><time>09:41</time><p id="body-text">Match the desktop palette, keep the chat readable, and make keyboard focus easy to see.</p><p id="muted-text">Muted text should still be comfortable to read.</p><p><a id="link" href="#reference">Desktop theme reference ↗</a></p></div></article><article class="message"><div class="avatar">AS</div><div class="message-body markup_fixture"><strong>Akane Sakurai</strong><time>09:43</time><p>The theme stays in one local CSS file. No remote styles, fonts, images or plugins.</p><pre><code>THEME=sakura-season
+cp -r "$THEME"/* ~/.config/</code></pre></div></article><article id="mention" class="message mentioned_fixture" data-placeholder-id="mention"><div class="avatar secondary">SS</div><div class="message-body"><strong>Sunnyshineshow</strong><time>09:45</time><p>@Akane Please keep the presence indicators and warning colors recognizable.</p><button id="reaction" class="reaction_fixture reactionMe_fixture" aria-pressed="true"><span class="reactionCount_fixture">✓ 2</span></button></div></article></div><div class="composer-area"><div id="composer" class="channelTextArea_fixture"><div id="editor" contenteditable="true" role="textbox" aria-label="Message theme-studio" tabindex="0"></div></div><div class="composer-foot">Keyboard focus is visible · reduced motion respected</div></div></section>
+    <aside id="members"><div><div class="channel-group">Online — 2</div><div class="member"><div class="avatar">AS</div><div>Akane Sakurai<div class="small">Keeping things organized</div></div></div><div class="member"><div class="avatar secondary">SS</div><div>Sunnyshineshow<div class="small">Theme studio</div></div></div></div><div id="menu" role="menu"><div id="menu-item">Control palette</div><button id="brand-button" class="button_fixture lookFilled_fixture colorBrand_fixture" role="menuitem">Primary control</button><button id="legacy-brand-button" role="menuitem">Legacy control</button><button id="danger-button" role="menuitem">Danger stays red</button></div></aside>
+  </main>
+  <footer class="preview-footer"><span>Local-only CSS · native layout and fonts · adaptive dark and light</span><span id="unrelated-container" class="container_fixture">Unrelated containers are not restyled.</span></footer>
+  <span id="focus-probe"></span>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const themes = ['sakura-season', 'violet-evergarden'];
+    const modes = ['theme-dark', 'theme-darker', 'theme-midnight', 'theme-light'];
+    const themeSelect = document.getElementById('theme-select');
+    const modeSelect = document.getElementById('mode-select');
+    const stylesheet = document.getElementById('theme-css');
+    function applyTheme() {
+      document.documentElement.dataset.ready = 'false';
+      document.documentElement.classList.remove(...modes);
+      document.documentElement.classList.add(modeSelect.value, 'visual-refresh');
+      document.getElementById('theme-name').textContent = themeSelect.options[themeSelect.selectedIndex].text;
+      document.querySelector('.markup_fixture pre code').textContent = `THEME=${themeSelect.value}\ncp -r "$THEME"/* ~/.config/`;
+      const themeUrl = new URL(`../../${themeSelect.value}/BetterDiscord/themes/${themeSelect.value}.theme.css`, location.href).href;
+      // Appearance changes reuse an already-loaded file. Reassigning an
+      // identical href does not reliably produce another load event.
+      if (stylesheet.href === themeUrl && stylesheet.sheet) {
+        document.documentElement.dataset.ready = 'true';
+        return;
+      }
+      stylesheet.onload = () => { document.documentElement.dataset.ready = 'true'; };
+      stylesheet.onerror = () => { document.documentElement.dataset.error = 'Theme stylesheet could not be loaded'; };
+      stylesheet.href = themeUrl;
+    }
+    themeSelect.value = themes.includes(params.get('theme')) ? params.get('theme') : themes[0];
+    modeSelect.value = modes.includes(params.get('mode')) ? params.get('mode') : modes[0];
+    themeSelect.addEventListener('change', applyTheme);
+    modeSelect.addEventListener('change', applyTheme);
+    document.getElementById('mention').id = 'chat-messages-fixture-1';
+    document.querySelectorAll('.channels a[data-list-item-id]').forEach(link => link.addEventListener('click', event => {
+      event.preventDefault();
+      document.querySelectorAll('.channels a').forEach(item => item.removeAttribute('aria-current'));
+      link.setAttribute('aria-current', 'page');
+    }));
+    applyTheme();
+  </script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 
 Gentle. Professional. Organized.
 
-Two themes for Niri + ashell + Fuzzel + Alacritty + Starship — switch with a single cp command.
+Two themes for Niri + ashell + BetterDiscord + Fuzzel + Alacritty + Starship — switch with a single cp command.
 
 ## What's inside
 
@@ -10,6 +10,7 @@ Two themes for Niri + ashell + Fuzzel + Alacritty + Starship — switch with a s
 dotfiles/
 ├── sakura-season/          🌸 Cherry blossom pink — soft & warm
 │   ├── niri/config.kdl
+│   ├── BetterDiscord/themes/sakura-season.theme.css
 │   ├── waybar/config, style.css, lang.sh
 │   ├── fuzzel/fuzzel.ini
 │   ├── alacritty/
@@ -27,6 +28,7 @@ dotfiles/
 │
 └── violet-evergarden/      ✉️ Violet iris blue — quiet & dignified
     ├── niri/config.kdl
+    ├── BetterDiscord/themes/violet-evergarden.theme.css
     ├── waybar/config, style.css, lang.sh
     ├── fuzzel/fuzzel.ini
     ├── alacritty/
@@ -108,6 +110,23 @@ sudo dnf install brightnessctl
 ```
 
 > **Waybar** is still included in the repo as a legacy alternative but no longer active — ashell is the current bar.
+
+### BetterDiscord
+
+Each desktop theme includes a standalone BetterDiscord theme:
+
+- **Sakura Season:** cherry-blossom pink, plum surfaces and lavender links.
+- **Violet Evergarden:** iris blue, navy surfaces and restrained brass details.
+
+Both support Discord's Dark, Darker, Midnight and Light appearance classes. The three dark modes intentionally share the desktop palette; Light uses matching light surfaces with darker text and links. Current Visual Refresh semantic colors and older desktop variables are covered.
+
+Themes are local-only vanilla CSS: no remote imports, downloaded fonts, wallpaper requests, plugins or build step. Native layout, fonts, avatars, role colors, presence indicators and critical/danger controls are preserved. Selected channels, mentions, reactions, the composer, menus and code blocks receive small finishing details. Keyboard focus remains visible; reduced motion and native high-contrast/forced-color modes are respected.
+
+BetterDiscord must already be installed in your Discord client. On native Linux, its default theme folder is `~/.config/BetterDiscord/themes/`; use **Settings → BetterDiscord → Themes → Open Themes Folder** to confirm the path for your installation, especially Flatpak or a custom XDG directory.
+
+Copy the selected theme there and enable **only one** of these themes. Disable competing color themes while checking it. Edit the documented `--aii-*` values at the top of the file to customize the palette and composer radius; synchronize the HSL companions if changing the brand colors.
+
+To preview without Discord, open [`tests/betterdiscord/preview.html`](tests/betterdiscord/preview.html). This is an explicitly labeled representative fixture, not a live Discord client. See [`tests/betterdiscord/README.md`](tests/betterdiscord/README.md) for repeatable syntax, deployment and browser checks. Discord can change its selectors and tokens; the fixture does not guarantee every screen in a future client build.
 
 ### Screen locker — gtklock (GNOME-style interactive)
 
@@ -233,6 +252,10 @@ cp $THEME/fuzzel/fuzzel.ini ~/.config/fuzzel/fuzzel.ini
 # ashell (status bar)
 mkdir -p ~/.config/ashell
 cp $THEME/ashell/config.toml ~/.config/ashell/config.toml
+
+# BetterDiscord (enable the copied theme in Discord settings)
+mkdir -p ~/.config/BetterDiscord/themes
+cp "$THEME/BetterDiscord/themes/$THEME.theme.css" ~/.config/BetterDiscord/themes/
 
 # Starship (shell prompt)
 mkdir -p ~/.config/starship
